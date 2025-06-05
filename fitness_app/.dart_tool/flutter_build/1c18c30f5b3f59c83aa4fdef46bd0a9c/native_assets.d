@@ -1,0 +1,1 @@
+ C:\\Users\\CHIMSOM\ ELUE\\Desktop\\FTA\ (fitness\ tracking\ app)\\fitness_app\\.dart_tool\\flutter_build\\1c18c30f5b3f59c83aa4fdef46bd0a9c\\native_assets.yaml: 
