@@ -4,9 +4,10 @@ import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class IntermediatePage extends StatefulWidget {
-  const IntermediatePage({Key? key}) : super(key: key);
+  const IntermediatePage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _IntermediatePageState createState() => _IntermediatePageState();
 }
 
@@ -17,7 +18,7 @@ class _IntermediatePageState extends State<IntermediatePage>
   bool _isTimerRunning = false;
   int _timerSeconds = 3;
   late AnimationController _animationController;
-  List<bool> _completedExercises = List.filled(5, false);
+  final List<bool> _completedExercises = List.filled(5, false);
 
   final List<String> _exercises = [
     "Standing Quadriceps Stretch",
@@ -36,7 +37,7 @@ class _IntermediatePageState extends State<IntermediatePage>
 
   void _startTimer() {
     setState(() => _isTimerRunning = true);
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (_timerSeconds > 0) {
         setState(() => _timerSeconds--);
         _startTimer(); // Recursive call for countdown
@@ -96,14 +97,14 @@ class _IntermediatePageState extends State<IntermediatePage>
           mainAxisSize: MainAxisSize.min,
           children: [
             Lottie.asset('assets/celebrate.json', height: 200),
-            Text("Workout Complete! 🎉"),
+            const Text("Workout Complete! 🎉"),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () =>
                 Navigator.popUntil(context, (route) => route.isFirst),
-            child: Text("Back to Home"),
+            child: const Text("Back to Home"),
           ),
         ],
       ),
@@ -113,7 +114,7 @@ class _IntermediatePageState extends State<IntermediatePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Intermediate Workout")),
+      appBar: AppBar(title: const Text("Intermediate Workout")),
       body: Column(
         children: [
           // Tab Bar
@@ -139,7 +140,7 @@ class _IntermediatePageState extends State<IntermediatePage>
             padding: const EdgeInsets.all(8.0),
             child: Text(
               "Progress: ${_completedExercises.where((e) => e).length}/5",
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
         ],
@@ -159,12 +160,12 @@ class _IntermediatePageState extends State<IntermediatePage>
     };
 
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           // Exercise GIF
           Container(
-            height: 200,
+            height: 300,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.grey[200],
@@ -175,7 +176,7 @@ class _IntermediatePageState extends State<IntermediatePage>
                 gifPaths[exercise] ?? 'assets/exercises/default.gif',
                 fit: BoxFit.cover,
                 width: double.infinity,
-                errorBuilder: (context, error, stackTrace) => Center(
+                errorBuilder: (context, error, stackTrace) => const Center(
                   child: Text(
                     "GIF not found",
                     style: TextStyle(fontSize: 16),
@@ -186,15 +187,16 @@ class _IntermediatePageState extends State<IntermediatePage>
           ),
 
           // Timer and Start Button (keep existing code below)
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           CircularPercentIndicator(
             radius: 100,
             lineWidth: 15,
             percent: _timerSeconds / 3,
-            center: Text("$_timerSeconds", style: TextStyle(fontSize: 40)),
+            center:
+                Text("$_timerSeconds", style: const TextStyle(fontSize: 40)),
             progressColor: PrimaryColor,
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           // Start Button
           ElevatedButton(

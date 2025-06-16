@@ -109,18 +109,23 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: size.height * 0.02,
                 ),
-                Container(
-                  width: size.width * 0.9,
-                  height: size.height * 0.2,
-                  decoration: BoxDecoration(
-                    // color: Colors.blue.shade200,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: ImageStack(
-                    size: size,
-                    image: 'assets/onBoardingImages/man 4.webp',
-                    title: 'Day 01 - Warm Up',
-                    time: '| 9:00 AM - 10:00 AM',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/warmups');
+                  },
+                  child: Container(
+                    width: size.width * 0.9,
+                    height: size.height * 0.2,
+                    decoration: BoxDecoration(
+                      // color: Colors.blue.shade200,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: ImageStack(
+                      size: size,
+                      image: 'assets/onBoardingImages/man 4.webp',
+                      title: 'Daily Warm-Up Session',
+                      time: '',
+                    ),
                   ),
                 ),
                 SizedBox(

@@ -156,7 +156,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\CHIMSOM ELUE\Desktop\FTA (fitness tracking app)\fitness_app\build\windows\x64\runner\ALL_BUILD.vcxproj">
+    <ProjectReference Include="C:\Users\CHIMSOM ELUE\Desktop\FTA (fitness tracking app)\fitness_app\build\windows\x64\plugins\url_launcher_windows\ALL_BUILD.vcxproj">
       <Project>{BC786C87-6DBA-39B5-BC00-531C3A2D532B}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

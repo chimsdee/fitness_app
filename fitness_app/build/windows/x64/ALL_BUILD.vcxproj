@@ -153,6 +153,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{B61D6247-A5EB-375C-8FB4-4EE58306652D}</Project>
       <Name>flutter_wrapper_plugin</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\Users\CHIMSOM ELUE\Desktop\FTA (fitness tracking app)\fitness_app\build\windows\x64\plugins\url_launcher_windows\url_launcher_windows_plugin.vcxproj">
+      <Project>{3881A5FE-C5D7-3C95-BB49-359F2A4D6C6B}</Project>
+      <Name>url_launcher_windows_plugin</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

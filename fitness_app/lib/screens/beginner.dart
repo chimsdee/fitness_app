@@ -1,7 +1,7 @@
 import 'package:fitness_app/constants/color.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class BeginnerPage extends StatefulWidget {
   const BeginnerPage({Key? key}) : super(key: key);
@@ -158,12 +158,12 @@ class _BeginnerPageState extends State<BeginnerPage>
     };
 
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           // Exercise GIF
           Container(
-            height: 200,
+            height: 300,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.grey[200],
@@ -194,6 +194,8 @@ class _BeginnerPageState extends State<BeginnerPage>
             progressColor: PrimaryColor,
           ),
           SizedBox(height: 20),
+
+          // Start Button
           ElevatedButton(
             onPressed: _isTimerRunning ? null : _startTimer,
             child: Text(_isTimerRunning ? "Running..." : "Start Exercise"),

@@ -1,3 +1,5 @@
+import 'package:fitness_app/screens/warmups.dart';
+import 'package:flutter/material.dart';
 import 'package:fitness_app/screens/Login%20SignUp/LoginSignUp.dart';
 import 'package:fitness_app/screens/ProfilePage/Languages.dart';
 import 'package:fitness_app/screens/ProfilePage/PrivacyPolicy.dart';
@@ -14,7 +16,6 @@ import 'package:fitness_app/screens/homeScreen/bottomNavigationBar.dart';
 import 'package:fitness_app/screens/homeScreen/homeScreen.dart';
 import 'package:fitness_app/screens/intermediate.dart';
 import 'package:fitness_app/screens/workoutCategories.dart';
-import 'package:flutter/material.dart';
 import 'package:fitness_app/screens/OnBoardingScreen/onBoardingScreen.dart';
 import 'package:fitness_app/screens/genderScreen/genderScreen.dart';
 import 'package:fitness_app/screens/ageScreen/ageScreen.dart';
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
         '/advance': (context) => const AdvancedPage(),
       },
       debugShowCheckedModeBanner: false,
-      home: const OnBoardingScreen(),
+      home: const HomepageNavbar(),
       // home: const workoutCategoriesPage(),
       //home: const NotificationPage(),
       // home: const HomepageNavbar(),
