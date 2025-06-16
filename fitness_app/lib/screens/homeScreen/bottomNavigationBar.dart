@@ -20,7 +20,7 @@ class _HomepageNavbarState extends State<HomepageNavbar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
-    const workoutProgress(),
+    const WorkoutProgress(),
     const NotificationPage(),
     const ProfilePage()
   ];

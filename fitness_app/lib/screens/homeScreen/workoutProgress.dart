@@ -4,17 +4,20 @@ import 'package:calendar_slider/calendar_slider.dart';
 import 'package:fitness_app/constants/color.dart';
 import 'package:flutter/material.dart';
 
-class workoutProgress extends StatefulWidget {
-  const workoutProgress({super.key});
+class WorkoutProgress extends StatefulWidget {
+  const WorkoutProgress({super.key});
 
   @override
-  State<workoutProgress> createState() => _workoutProgressState();
+  State<WorkoutProgress> createState() => _WorkoutProgressState();
 }
 
-class _workoutProgressState extends State<workoutProgress> {
+class _WorkoutProgressState extends State<WorkoutProgress> {
   final _firstController = CalendarSliderController();
-
   late DateTime _selectedDateAppBBar;
+
+  // Track which item is selected (0: steps, 1: time, 2: heart)
+  int _selectedWorkout = 1; // Default to Time Spent
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -67,29 +70,41 @@ class _workoutProgressState extends State<workoutProgress> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CircularIndicatorText(
-                    text: '6540',
-                    subText: 'Steps',
-                    color: Colors.red,
-                    strokeWidth: 7,
-                    size: size.width * 0.26,
-                    value: 0.8,
+                  // Steps circle
+                  Opacity(
+                    opacity: _selectedWorkout == 0 ? 1.0 : 0.5,
+                    child: CircularIndicatorText(
+                      text: '6540',
+                      subText: 'Steps',
+                      color: Colors.red,
+                      strokeWidth: 7,
+                      size: size.width * 0.26,
+                      value: 0.8,
+                    ),
                   ),
-                  CircularIndicatorText(
-                    text: '45min',
-                    subText: 'Time',
-                    color: Colors.blue,
-                    strokeWidth: 7,
-                    size: size.width * 0.26,
-                    value: 0.45,
+                  // Time circle
+                  Opacity(
+                    opacity: _selectedWorkout == 1 ? 1.0 : 0.5,
+                    child: CircularIndicatorText(
+                      text: '45min',
+                      subText: 'Time',
+                      color: Colors.blue,
+                      strokeWidth: 7,
+                      size: size.width * 0.26,
+                      value: 0.45,
+                    ),
                   ),
-                  CircularIndicatorText(
-                    text: '72bpm',
-                    subText: 'Heart',
-                    color: Colors.orange,
-                    strokeWidth: 7,
-                    size: size.width * 0.26,
-                    value: 0.62,
+                  // Heart circle
+                  Opacity(
+                    opacity: _selectedWorkout == 2 ? 1.0 : 0.5,
+                    child: CircularIndicatorText(
+                      text: '72bpm',
+                      subText: 'Heart',
+                      color: Colors.orange,
+                      strokeWidth: 7,
+                      size: size.width * 0.26,
+                      value: 0.62,
+                    ),
                   ),
                 ],
               ),
@@ -105,42 +120,65 @@ class _workoutProgressState extends State<workoutProgress> {
                       'Workout Progress',
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
-                    Text("View All",
-                        style: TextStyle(fontSize: 15, color: PrimaryColor)),
                   ],
                 ),
               ),
               SizedBox(
                 height: size.height * 0.03,
               ),
-              const TextCheckboxContainer(
-                text: 'Stability Training',
-                subtext: '10:00am - 11:00am',
-                value: true,
+              // Steps Counted
+              Opacity(
+                opacity: _selectedWorkout == 0 ? 1.0 : 0.5,
+                child: TextCheckboxContainer(
+                  text: 'Steps Counted',
+                  subtext: '10:00am - 11:00am',
+                  value: _selectedWorkout == 0,
+                  onChanged: (value) {
+                    if (value == true) {
+                      setState(() {
+                        _selectedWorkout = 0;
+                      });
+                    }
+                  },
+                ),
               ),
               SizedBox(
                 height: size.height * 0.02,
               ),
-              const TextCheckboxContainer(
-                text: 'Stability Training',
-                subtext: '10:00am - 11:00am',
-                value: false,
+              // Time Spent
+              Opacity(
+                opacity: _selectedWorkout == 1 ? 1.0 : 0.5,
+                child: TextCheckboxContainer(
+                  text: 'Time Spent',
+                  subtext: '10:00am - 11:00am',
+                  value: _selectedWorkout == 1,
+                  onChanged: (value) {
+                    if (value == true) {
+                      setState(() {
+                        _selectedWorkout = 1;
+                      });
+                    }
+                  },
+                ),
               ),
               SizedBox(
                 height: size.height * 0.03,
               ),
-              const TextCheckboxContainer(
-                text: 'Stability Training',
-                subtext: '10:00am - 11:00am',
-                value: true,
-              ),
-              SizedBox(
-                height: size.height * 0.03,
-              ),
-              const TextCheckboxContainer(
-                text: 'Stability Training',
-                subtext: '10:00am - 11:00am',
-                value: true,
+              // Heart Rate
+              Opacity(
+                opacity: _selectedWorkout == 2 ? 1.0 : 0.5,
+                child: TextCheckboxContainer(
+                  text: 'Heart Rate',
+                  subtext: '10:00am - 11:00am',
+                  value: _selectedWorkout == 2,
+                  onChanged: (value) {
+                    if (value == true) {
+                      setState(() {
+                        _selectedWorkout = 2;
+                      });
+                    }
+                  },
+                ),
               ),
             ],
           ),
@@ -151,15 +189,18 @@ class _workoutProgressState extends State<workoutProgress> {
 }
 
 class TextCheckboxContainer extends StatelessWidget {
-  const TextCheckboxContainer(
-      {super.key,
-      required this.text,
-      required this.subtext,
-      required this.value});
+  const TextCheckboxContainer({
+    super.key,
+    required this.text,
+    required this.subtext,
+    required this.value,
+    required this.onChanged,
+  });
 
   final String text;
   final String subtext;
   final bool value;
+  final Function(bool?) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -199,7 +240,7 @@ class TextCheckboxContainer extends StatelessWidget {
           ),
           Center(
             child: Checkbox(
-              onChanged: (value) {},
+              onChanged: onChanged,
               value: value,
               activeColor: PrimaryColor,
             ),
