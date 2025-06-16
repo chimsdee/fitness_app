@@ -69,9 +69,9 @@ class MyApp extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false,
       home: const HomepageNavbar(),
+      // home: const OnBoardingScreen(),
       // home: const workoutCategoriesPage(),
       //home: const NotificationPage(),
-      // home: const HomepageNavbar(),
     );
   }
 }
