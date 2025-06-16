@@ -1,6 +1,7 @@
+// ignore_for_file: file_names, avoid_print
+
 import 'package:fitness_app/Provider/user_provider.dart';
 import 'package:fitness_app/constants/color.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/models/DetailPageButton.dart.dart';
 import 'package:fitness_app/models/DetailPageTitle.dart';

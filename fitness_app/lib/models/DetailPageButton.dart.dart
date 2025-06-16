@@ -30,7 +30,7 @@ class DetailPageButton extends StatelessWidget {
                 horizontal: size.width * 0.02,
               ),
               height: size.height * 0.07,
-              child: Center(
+              child: const Center(
                 child: Text(
                   'Back',
                   style: TextStyle(
@@ -41,7 +41,7 @@ class DetailPageButton extends StatelessWidget {
               ),
             ),
           ),
-        Spacer(),
+        const Spacer(),
         GestureDetector(
           onTap: onTap,
           child: Container(
@@ -59,7 +59,7 @@ class DetailPageButton extends StatelessWidget {
             child: Center(
               child: Text(
                 text,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                 ),

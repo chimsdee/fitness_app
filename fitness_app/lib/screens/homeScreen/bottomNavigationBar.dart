@@ -1,4 +1,4 @@
-// ignore_for_file: duplicate_import
+// ignore_for_file: duplicate_import, file_names, unnecessary_import
 
 import 'package:fitness_app/constants/color.dart';
 import 'package:fitness_app/screens/ProfilePage/profilePage.dart';
@@ -18,7 +18,7 @@ class HomepageNavbar extends StatefulWidget {
 
 class _HomepageNavbarState extends State<HomepageNavbar> {
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
     const workoutProgress(),
     const NotificationPage(),

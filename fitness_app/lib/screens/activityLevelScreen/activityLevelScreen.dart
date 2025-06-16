@@ -22,6 +22,8 @@
 //       'True Beast',
 //     ];
 
+// ignore_for_file: file_names, unnecessary_import, avoid_print
+
 //     var size = MediaQuery.of(context).size;
 //     return Scaffold(
 //       backgroundColor: Colors.black,

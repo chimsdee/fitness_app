@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, unnecessary_import
+
 import 'package:fitness_app/constants/color.dart';
 import 'package:fitness_app/constants/padding_margin.dart';
 import 'package:fitness_app/screens/advanced.dart';
@@ -218,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => BeginnerPage()),
+                                builder: (context) => const BeginnerPage()),
                           );
                         },
                         child: Container(
@@ -244,7 +246,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => IntermediatePage()),
+                                builder: (context) => const IntermediatePage()),
                           );
                         },
                         child: Container(
@@ -272,7 +274,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AdvancedPage()),
+                                builder: (context) => const AdvancedPage()),
                           );
                         },
                         child: Container(

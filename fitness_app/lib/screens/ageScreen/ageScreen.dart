@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, unnecessary_import, prefer_const_constructors
+
 import 'package:fitness_app/Provider/user_provider.dart';
 import 'package:fitness_app/constants/color.dart';
 import 'package:fitness_app/models/DetailPageButton.dart.dart';
@@ -23,6 +25,7 @@ class __AgePageState extends State<AgePage> {
   void initState() {
     super.initState();
     _controller = FixedExtentScrollController(initialItem: age - 1);
+    // ignore: avoid_print
     print("Initial age: $age");
   }
 
@@ -87,13 +90,15 @@ class __AgePageState extends State<AgePage> {
                         onSelectedItemChanged: (index) {
                           setState(() {
                             age = ageValues[index];
+                            // ignore: avoid_print
                             print("Selected age: $age");
                           });
                         },
                         childDelegate: ListWheelChildBuilderDelegate(
                           builder: (context, index) {
-                            if (index < 0 || index >= ageValues.length)
+                            if (index < 0 || index >= ageValues.length) {
                               return null;
+                            }
                             final isSelected = age == ageValues[index];
                             return Center(
                               child: Text(
@@ -116,6 +121,7 @@ class __AgePageState extends State<AgePage> {
                     DetailPageButton(
                       text: 'Next',
                       onTap: () {
+                        // ignore: avoid_print
                         print("Saving age: $age");
                         userProvider.setAge(age);
                         Navigator.pushNamed(context, '/weight');

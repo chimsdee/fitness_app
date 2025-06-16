@@ -10,6 +10,8 @@
 //   State<HeightPage> createState() => _HeightPageState();
 // }
 
+// ignore_for_file: file_names, unnecessary_import, avoid_print
+
 // class _HeightPageState extends State<HeightPage> {
 //   int height = 170; // Default height in cm
 //   @override
@@ -161,8 +163,9 @@ class _HeightPageState extends State<HeightPage> {
                             },
                             childDelegate: ListWheelChildBuilderDelegate(
                               builder: (context, index) {
-                                if (index < 0 || index >= heightValues.length)
+                                if (index < 0 || index >= heightValues.length) {
                                   return null;
+                                }
 
                                 final isSelected =
                                     height == heightValues[index];

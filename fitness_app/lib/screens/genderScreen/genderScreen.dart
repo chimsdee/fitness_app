@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, avoid_print
+
 import 'package:fitness_app/constants/color.dart';
 import 'package:fitness_app/models/DetailPageButton.dart.dart';
 import 'package:fitness_app/models/DetailPageTitle.dart';
@@ -29,7 +31,7 @@ class _GenderPageState extends State<GenderPage> {
         height: size.height,
         child: Column(
           children: [
-            DetailPageTitle(
+            const DetailPageTitle(
               title: 'Tell us about yourself',
               text: 'This will help us find the best\ncontent for you',
               color: Colors.white,
@@ -60,6 +62,7 @@ class _GenderPageState extends State<GenderPage> {
                   isMale = false;
                   isFemale = true;
                 });
+
                 print('Selected Gender: Female');
               },
               isSelected: isFemale,

@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison
+// ignore_for_file: unnecessary_null_comparison, file_names, use_super_parameters
 
 import 'package:fitness_app/constants/color.dart';
 import 'package:fitness_app/screens/OnBoardingScreen/onBoardingScreen.dart';
@@ -112,7 +112,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 isLoginSelected
                     ? const CircleAvatar(
                         radius: 20,

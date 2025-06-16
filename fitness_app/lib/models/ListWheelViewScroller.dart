@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types
+
 import 'package:fitness_app/constants/color.dart';
 import 'package:flutter/material.dart';
 
@@ -21,12 +23,13 @@ class listWheelScrollView extends StatelessWidget {
       itemExtent: 50,
       onSelectedItemChanged: (index) {
         // Handle the selected item change
+        // ignore: avoid_print
         print(index);
       },
       diameterRatio: 1.5,
       children: items.map((level) {
         return Text(level,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 30,
               color: PrimaryColor,
               fontWeight: FontWeight.bold,

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, unnecessary_to_list_in_spreads
+
 import 'package:fitness_app/constants/color.dart';
 import 'package:flutter/material.dart';
 

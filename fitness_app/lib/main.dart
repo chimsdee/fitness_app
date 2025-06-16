@@ -1,4 +1,3 @@
-import 'package:fitness_app/screens/warmups.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/screens/Login%20SignUp/LoginSignUp.dart';
 import 'package:fitness_app/screens/ProfilePage/Languages.dart';

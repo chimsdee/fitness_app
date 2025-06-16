@@ -1,10 +1,12 @@
+// ignore_for_file: library_private_types_in_public_api, prefer_final_fields
+
 import 'package:fitness_app/constants/color.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class AdvancedPage extends StatefulWidget {
-  const AdvancedPage({Key? key}) : super(key: key);
+  const AdvancedPage({super.key});
 
   @override
   _AdvancedPageState createState() => _AdvancedPageState();
@@ -36,7 +38,7 @@ class _AdvancedPageState extends State<AdvancedPage>
 
   void _startTimer() {
     setState(() => _isTimerRunning = true);
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (_timerSeconds > 0) {
         setState(() => _timerSeconds--);
         _startTimer(); // Recursive call for countdown
@@ -96,14 +98,14 @@ class _AdvancedPageState extends State<AdvancedPage>
           mainAxisSize: MainAxisSize.min,
           children: [
             Lottie.asset('assets/celebrate.json', height: 200),
-            Text("Workout Complete! 🎉"),
+            const Text("Workout Complete! 🎉"),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () =>
                 Navigator.popUntil(context, (route) => route.isFirst),
-            child: Text("Back to Home"),
+            child: const Text("Back to Home"),
           ),
         ],
       ),
@@ -113,7 +115,7 @@ class _AdvancedPageState extends State<AdvancedPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Advanced Workout")),
+      appBar: AppBar(title: const Text("Advanced Workout")),
       body: Column(
         children: [
           // Tab Bar
@@ -139,7 +141,7 @@ class _AdvancedPageState extends State<AdvancedPage>
             padding: const EdgeInsets.all(10.0),
             child: Text(
               "Progress: ${_completedExercises.where((e) => e).length}/5",
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
         ],
@@ -176,7 +178,7 @@ class _AdvancedPageState extends State<AdvancedPage>
                 gifPaths[exercise] ?? 'assets/exercises/default.gif',
                 fit: BoxFit.cover,
                 width: double.infinity,
-                errorBuilder: (context, error, stackTrace) => Center(
+                errorBuilder: (context, error, stackTrace) => const Center(
                   child: Text(
                     "GIF not found",
                     style: TextStyle(fontSize: 16),
@@ -187,15 +189,16 @@ class _AdvancedPageState extends State<AdvancedPage>
           ),
 
           // Timer and Start Button (keep existing code below)
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           CircularPercentIndicator(
             radius: 100,
             lineWidth: 15,
             percent: _timerSeconds / 3,
-            center: Text("$_timerSeconds", style: TextStyle(fontSize: 40)),
+            center:
+                Text("$_timerSeconds", style: const TextStyle(fontSize: 40)),
             progressColor: PrimaryColor,
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           // Start Button
           ElevatedButton(

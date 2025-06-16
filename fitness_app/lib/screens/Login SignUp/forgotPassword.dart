@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, avoid_print
+
 import 'package:fitness_app/constants/color.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +27,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -80,8 +82,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   fillColor: Colors.white,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(
-                      color: const Color.fromARGB(255, 255, 255, 255),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                   ),
                   focusedBorder: const UnderlineInputBorder(
@@ -92,7 +94,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Container(
               width: size.width * 0.9,
               alignment: Alignment.center,

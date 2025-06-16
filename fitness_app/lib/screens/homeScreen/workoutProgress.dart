@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, file_names, camel_case_types
 
 import 'package:calendar_slider/calendar_slider.dart';
 import 'package:fitness_app/constants/color.dart';

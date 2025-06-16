@@ -165,6 +165,8 @@
 //   }
 // }
 
+// ignore_for_file: file_names
+
 import 'package:fitness_app/constants/color.dart';
 import 'package:fitness_app/screens/advanced.dart';
 import 'package:fitness_app/screens/beginner.dart';
@@ -174,6 +176,7 @@ import 'package:fitness_app/screens/intermediate.dart';
 import 'package:fitness_app/screens/yoga.dart';
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class workoutCategories extends StatelessWidget {
   final List<WorkoutCategory> categories = [
     WorkoutCategory(
@@ -213,6 +216,8 @@ class workoutCategories extends StatelessWidget {
       page: const CorePowerPage(), // Replace with CorePage()
     ),
   ];
+
+  workoutCategories({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -263,8 +268,7 @@ class WorkoutCategory {
 class WorkoutCategoryCard extends StatelessWidget {
   final WorkoutCategory category;
 
-  const WorkoutCategoryCard({Key? key, required this.category})
-      : super(key: key);
+  const WorkoutCategoryCard({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {

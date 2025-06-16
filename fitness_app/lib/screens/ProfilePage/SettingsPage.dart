@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:fitness_app/screens/ProfilePage/Languages.dart';
 import 'package:fitness_app/screens/ProfilePage/UnitsOfMeasure.dart';
 import 'package:fitness_app/screens/ProfilePage/contactUs.dart';

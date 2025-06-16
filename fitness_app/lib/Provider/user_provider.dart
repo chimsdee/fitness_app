@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class UserProvider with ChangeNotifier {
   final String _gender = '';
-  int _age = 0;
-  double _height = 0.0; //
-  double _weight = 0.0; //
-  String _activityLevel = ''; //
-  String _goal = ''; //
+  final int _age = 0;
+  final double _height = 0.0; //
+  final double _weight = 0.0; //
+  final String _activityLevel = ''; //
+  final String _goal = ''; //
 
   String get gender => _gender;
   int get age => _age;
