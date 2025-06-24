@@ -29,6 +29,19 @@ class _BeginnerPageState extends State<BeginnerPage>
     "Standing Toe Touch",
   ];
 
+  final Map<String, String> _exerciseInstructions = {
+    "Jumping Jack":
+        "1. Stand with feet together and arms at sides\n2. Jump while spreading legs and raising arms overhead\n3. Return to starting position and repeat",
+    "Push-Ups":
+        "1. Start in plank position with hands shoulder-width apart\n2. Lower body until chest nearly touches floor\n3. Push back up to starting position",
+    "Bodyweigt Squats":
+        "1. Stand with feet shoulder-width apart\n2. Lower hips back and down as if sitting in a chair\n3. Keep chest up and knees behind toes\n4. Return to standing position",
+    "Crunches":
+        "1. Lie on back with knees bent and feet flat\n2. Place hands behind head or across chest\n3. Lift shoulder blades off floor using abdominal muscles\n4. Slowly lower back down",
+    "Standing Toe Touch":
+        "1. Stand with feet hip-width apart\n2. Bend forward at hips, keeping legs straight\n3. Reach toward toes with hands\n4. Hold briefly and return to standing",
+  };
+
   @override
   void initState() {
     super.initState();
@@ -84,6 +97,25 @@ class _BeginnerPageState extends State<BeginnerPage>
               }
             },
             child: Text(_currentTabIndex == 4 ? "Done" : "Next Exercise"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showInstructions(String exercise) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("$exercise Instructions"),
+        content: SingleChildScrollView(
+          child: Text(
+              _exerciseInstructions[exercise] ?? "No instructions available"),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Close"),
           ),
         ],
       ),
@@ -163,34 +195,57 @@ class _BeginnerPageState extends State<BeginnerPage>
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          // Exercise GIF
-          Container(
-            height: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.grey[200],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                gifPaths[exercise] ?? 'assets/exercises/default.gif',
-                fit: BoxFit.cover,
-                width: double.infinity,
-                errorBuilder: (context, error, stackTrace) => const Center(
-                  child: Text(
-                    "GIF not found",
-                    style: TextStyle(fontSize: 16),
+          // Exercise GIF with info button overlay
+          Stack(
+            children: [
+              Container(
+                height: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey[200],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    gifPaths[exercise] ?? 'assets/exercises/default.gif',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    errorBuilder: (context, error, stackTrace) => const Center(
+                      child: Text(
+                        "GIF not found",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+              Positioned(
+                bottom: 10,
+                right: 10,
+                child: GestureDetector(
+                  onTap: () => _showInstructions(exercise),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      color: PrimaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.info_outline,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
 
           // Timer and Start Button (keep existing code below)
           const SizedBox(height: 20),
           CircularPercentIndicator(
             radius: 100,
-            lineWidth: 15,
+            lineWidth: 20,
             percent: _timerSeconds / 3,
             center:
                 Text("$_timerSeconds", style: const TextStyle(fontSize: 40)),

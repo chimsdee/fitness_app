@@ -1,3 +1,4 @@
+import 'package:fitness_app/screens/warmups.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/screens/Login%20SignUp/LoginSignUp.dart';
 import 'package:fitness_app/screens/ProfilePage/Languages.dart';
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
         '/beginner': (context) => const BeginnerPage(),
         '/intermediate': (context) => const IntermediatePage(),
         '/advance': (context) => const AdvancedPage(),
+        '/warmups': (context) => const WarmUpsPage(),
       },
       debugShowCheckedModeBanner: false,
       home: const HomepageNavbar(),
