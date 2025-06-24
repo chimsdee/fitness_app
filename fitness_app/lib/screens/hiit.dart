@@ -29,6 +29,19 @@ class _HighIntensityPageState extends State<HighIntensityPage>
     "Plank"
   ];
 
+  final Map<String, String> _exerciseInstructions = {
+    "Bodyweigt Squats":
+        "1. Stand with feet shoulder-width apart\n2. Lower hips back and down as if sitting in a chair\n3. Keep chest up and knees behind toes\n4. Return to standing position",
+    "Push-Ups":
+        "1. Start in plank position with hands shoulder-width apart\n2. Lower body until chest nearly touches floor\n3. Push back up to starting position",
+    "Glutes Bridges":
+        "1. Lie on your back with your knees bent, feet flat on the floor hip-width apart, and arms by your sides.\n2. Tighten your core and squeeze your glutes.\n3. Lift your hips off the ground until your body forms a straight line from shoulders to knees.\n4. Hold for 1-2 seconds, then slowly lower your hips back down. Repeat. ",
+    "Mountain Climbers":
+        "1. Start in a plank position with your hands directly under your shoulders and your body in a straight line.\n2. Engage your core to keep your hips level.\n3. Drive one knee toward your chest quickly.\n4. Switch legs rapidly, as if you’re \"running\" in place. Continue alternating. ",
+    "Plank":
+        "1. Lie face down, then lift onto your forearms and toes.\n2. Keep your elbows under your shoulders and your body in a straight line from head to heels.\n3. Engage your core, glutes, and legs—avoid sagging or raising your hips.\n4. Hold the position for as long as you can maintain proper form.",
+  };
+
   @override
   void initState() {
     super.initState();
@@ -84,6 +97,25 @@ class _HighIntensityPageState extends State<HighIntensityPage>
               }
             },
             child: Text(_currentTabIndex == 4 ? "Done" : "Next Exercise"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showInstructions(String exercise) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("$exercise Instructions"),
+        content: SingleChildScrollView(
+          child: Text(
+              _exerciseInstructions[exercise] ?? "No instructions available"),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Close"),
           ),
         ],
       ),
@@ -164,26 +196,49 @@ class _HighIntensityPageState extends State<HighIntensityPage>
       child: Column(
         children: [
           // Exercise GIF
-          Container(
-            height: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.grey[200],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                gifPaths[exercise] ?? 'assets/exercises/default.gif',
-                fit: BoxFit.cover,
-                width: double.infinity,
-                errorBuilder: (context, error, stackTrace) => const Center(
-                  child: Text(
-                    "GIF not found",
-                    style: TextStyle(fontSize: 16),
+          Stack(
+            children: [
+              Container(
+                height: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey[200],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    gifPaths[exercise] ?? 'assets/exercises/default.gif',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    errorBuilder: (context, error, stackTrace) => const Center(
+                      child: Text(
+                        "GIF not found",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+              Positioned(
+                bottom: 10,
+                right: 10,
+                child: GestureDetector(
+                  onTap: () => _showInstructions(exercise),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      color: PrimaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.info_outline,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
 
           // Timer and Start Button (keep existing code below)

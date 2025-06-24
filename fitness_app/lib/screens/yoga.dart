@@ -20,12 +20,25 @@ class _YogaPageState extends State<YogaPage> with TickerProviderStateMixin {
   final List<bool> _completedExercises = List.filled(5, false);
 
   final List<String> _exercises = [
-    "Ustrasana",
+    "Ultrasana",
     "Cow Pose",
     "Cobra Stretch",
     "Butterfly Pose",
     "Half Pigeon Pose"
   ];
+
+  final Map<String, String> _exerciseInstructions = {
+    "Ultrasana":
+        "1. Kneel on the floor with knees hip-width apart and hands on your lower back.\n2. Inhale and lift your chest, pressing your hips forward.\n3. Reach back to hold your heels (if flexible enough), keeping your neck relaxed.\n4. Hold the pose for a few breaths, then slowly return upright.",
+    "Cow Pose":
+        "1. Start on your hands and knees (tabletop position).\n2. Inhale, drop your belly toward the mat and lift your chest and chin.\n3. Arch your back gently while keeping shoulders away from ears.\n4. Exhale and return to the neutral spine or flow into Cat Pose.",
+    "Cobra Stretch":
+        "1. Lie face-down with legs extended and palms under your shoulders.\n2. Inhale and gently lift your chest, pressing through your palms.\n3. Keep elbows close to your body and shoulders relaxed.\n4. Hold for a few breaths, then lower back down. ",
+    "Butterfly Pose":
+        "1. Sit with your spine straight and soles of your feet together.\n2. Let your knees drop toward the floor while holding your feet.\n3. Inhale and lengthen your spine; exhale and gently lean forward.\n4. Hold the stretch without forcing your knees down.",
+    "Half Pigeon Pose":
+        "1. From a tabletop or downward dog, bring your right knee forward toward your right wrist.\n2. Extend your left leg straight back with the top of your foot on the mat.\n3. Keep hips square and gently lower your upper body over your front leg.\n4. Breathe deeply and switch sides after holding.",
+  };
 
   @override
   void initState() {
@@ -82,6 +95,25 @@ class _YogaPageState extends State<YogaPage> with TickerProviderStateMixin {
               }
             },
             child: Text(_currentTabIndex == 4 ? "Done" : "Next Exercise"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showInstructions(String exercise) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("$exercise Instructions"),
+        content: SingleChildScrollView(
+          child: Text(
+              _exerciseInstructions[exercise] ?? "No instructions available"),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Close"),
           ),
         ],
       ),
@@ -162,26 +194,49 @@ class _YogaPageState extends State<YogaPage> with TickerProviderStateMixin {
       child: Column(
         children: [
           // Exercise GIF
-          Container(
-            height: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.grey[200],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                gifPaths[exercise] ?? 'assets/exercises/default.gif',
-                fit: BoxFit.cover,
-                width: double.infinity,
-                errorBuilder: (context, error, stackTrace) => const Center(
-                  child: Text(
-                    "GIF not found",
-                    style: TextStyle(fontSize: 16),
+          Stack(
+            children: [
+              Container(
+                height: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey[200],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    gifPaths[exercise] ?? 'assets/exercises/default.gif',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    errorBuilder: (context, error, stackTrace) => const Center(
+                      child: Text(
+                        "GIF not found",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+              Positioned(
+                bottom: 10,
+                right: 10,
+                child: GestureDetector(
+                  onTap: () => _showInstructions(exercise),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      color: PrimaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.info_outline,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
 
           // Timer and Start Button (keep existing code below)

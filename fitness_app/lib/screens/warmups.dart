@@ -29,6 +29,19 @@ class _WarmUpsPageState extends State<WarmUpsPage>
     "Elbow to Knee Twists"
   ];
 
+  final Map<String, String> _exerciseInstructions = {
+    "Arm Circles":
+        "Stand tall with feet shoulder-width apart and extend your arms out to the sides at shoulder height.\n2.Start making small circles with your arms going forward.\n3. Gradually increase the size of the circles for 10–15 seconds.\n4. Reverse direction and repeat backward for the same duration.",
+    "High Knee Run":
+        "1. Stand straight with arms at your sides.\n2. Begin running in place, lifting your knees as high as possible towards your chest.\n3. Pump your arms as if sprinting to stay balanced.\n4. Maintain a quick pace for 20–30 seconds. ",
+    "Cossack Squat":
+        "1. Stand with feet wider than shoulder-width apart and point toes slightly out.\n2. Shift your weight to one leg and squat down on that side while keeping the other leg straight.\n3. Keep your chest up and reach your arms forward for balance.\n4. Push through your bent leg to return to the center, then repeat on the other side. ",
+    "Dynamic Chest Stretch":
+        "1. Stand upright with feet shoulder-width apart.\n2. Extend both arms straight out to the sides.\n3. Swing your arms in front of your chest and cross them, alternating which arm is on top.\n4. Open your arms back out and repeat continuously for 10–15 reps. ",
+    "Elbow to Knee Twists":
+        "1. Stand with feet hip-width apart and place your hands behind your head.\n2. Lift your right knee while twisting your torso to bring your left elbow toward it.\n3. Return to the starting position.\n4. Repeat with the opposite elbow and knee, alternating sides. ",
+  };
+
   @override
   void initState() {
     super.initState();
@@ -84,6 +97,25 @@ class _WarmUpsPageState extends State<WarmUpsPage>
               }
             },
             child: Text(_currentTabIndex == 4 ? "Done" : "Next Warm-Up"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showInstructions(String exercise) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("$exercise Instructions"),
+        content: SingleChildScrollView(
+          child: Text(
+              _exerciseInstructions[exercise] ?? "No instructions available"),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Close"),
           ),
         ],
       ),
@@ -164,26 +196,49 @@ class _WarmUpsPageState extends State<WarmUpsPage>
       child: Column(
         children: [
           // Exercise GIF
-          Container(
-            height: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.grey[200],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                gifPaths[exercise] ?? 'assets/exercises/default.gif',
-                fit: BoxFit.cover,
-                width: double.infinity,
-                errorBuilder: (context, error, stackTrace) => const Center(
-                  child: Text(
-                    "GIF not found",
-                    style: TextStyle(fontSize: 16),
+          Stack(
+            children: [
+              Container(
+                height: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey[200],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    gifPaths[exercise] ?? 'assets/exercises/default.gif',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    errorBuilder: (context, error, stackTrace) => const Center(
+                      child: Text(
+                        "GIF not found",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+              Positioned(
+                bottom: 10,
+                right: 10,
+                child: GestureDetector(
+                  onTap: () => _showInstructions(exercise),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      color: PrimaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.info_outline,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
 
           // Timer and Start Button (keep existing code below)
@@ -201,7 +256,7 @@ class _WarmUpsPageState extends State<WarmUpsPage>
           // Start Button
           ElevatedButton(
             onPressed: _isTimerRunning ? null : _startTimer,
-            child: Text(_isTimerRunning ? "Running..." : "Start Warm-Up"),
+            child: Text(_isTimerRunning ? "Running..." : "Start Exercise"),
           ),
         ],
       ),
