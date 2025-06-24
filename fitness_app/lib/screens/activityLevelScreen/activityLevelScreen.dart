@@ -214,7 +214,7 @@ class _ActivityLevelScreenState extends State<ActivityLevelScreen> {
                         userProvider.setActivityLevel(selectedLevel);
                         print(
                             "Provider current level: ${userProvider.activityLevel}");
-                        Navigator.pushNamed(context, '/bottomNavigationBar');
+                        Navigator.pushNamed(context, '/login');
                       },
                       showbackButton: true,
                       onBackTap: () {

@@ -70,8 +70,9 @@ class MyApp extends StatelessWidget {
         '/warmups': (context) => const WarmUpsPage(),
       },
       debugShowCheckedModeBanner: false,
-      home: const HomepageNavbar(),
+      // home: const HomepageNavbar(),
       // home: const OnBoardingScreen(),
+      home: const SignUp(),
       // home: const workoutCategoriesPage(),
       //home: const NotificationPage(),
     );
