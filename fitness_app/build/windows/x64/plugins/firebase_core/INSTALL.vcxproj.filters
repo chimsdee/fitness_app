@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\CHIMSOM ELUE\Desktop\FTA (fitness tracking app)\fitness_app\build\windows\x64\CMakeFiles\08aa84ab7708dbc9619cd0ce4706257f\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{81910BA5-A076-3D64-A6A0-DEB91107AF2B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
