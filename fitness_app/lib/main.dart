@@ -3,17 +3,20 @@ import 'package:fitness_app/bmrCalculator.dart';
 import 'package:fitness_app/bodyfat_calc.dart';
 import 'package:fitness_app/hydration_calc.dart';
 import 'package:fitness_app/idealweight_calc.dart';
+import 'package:fitness_app/screens/ProfilePage/UnitsOfMeasure.dart';
 import 'package:fitness_app/screens/calculatorCategories.dart';
 import 'package:fitness_app/screens/warmups.dart';
 import 'package:fitness_app/tdee_calc.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/screens/Login%20SignUp/LoginSignUp.dart';
 import 'package:fitness_app/screens/ProfilePage/Languages.dart';
-import 'package:fitness_app/screens/ProfilePage/PrivacyPolicy.dart';
-import 'package:fitness_app/screens/ProfilePage/SettingsPage.dart';
-import 'package:fitness_app/screens/ProfilePage/UnitsOfMeasure.dart';
+import 'package:fitness_app/screens/ProfilePage/PrivacyPolicy.dart'
+    as privacy_policy;
+import 'package:fitness_app/screens/ProfilePage/SettingsPage.dart'
+    as settings_page;
 import 'package:fitness_app/screens/ProfilePage/contactUs.dart';
-import 'package:fitness_app/screens/ProfilePage/editPrifile.dart';
+import 'package:fitness_app/screens/ProfilePage/editProfile.dart'
+    as edit_profile;
 import 'package:fitness_app/screens/ProfilePage/profilePage.dart';
 import 'package:fitness_app/screens/ProfilePage/settings_Notifications.dart';
 import 'package:fitness_app/screens/advanced.dart';
@@ -65,13 +68,13 @@ class MyApp extends StatelessWidget {
         '/verification': (context) => const VerificationPage(),
         '/bottomNavigationBar': (context) => const HomepageNavbar(),
         '/profile': (context) => const ProfilePage(),
-        '/privacyPolicy': (context) => const PrivacyPolicyPage(),
-        '/settings': (context) => const SettingsPage(),
+        '/privacyPolicy': (context) => const privacy_policy.PrivacyPolicyPage(),
+        '/settings': (context) => const settings_page.SettingsPage(),
         '/unitsOfMeasure': (context) => const UnitsOfMeasure(),
         '/settings_Notifications': (context) => const Settings_Notifications(),
         '/languages': (context) => const LanguageSettings(),
         '/contactUs': (context) => const ContactUsPage(),
-        '/edit': (context) => const EditProfilePage(),
+        '/edit': (context) => const edit_profile.EditProfilePage(),
         '/beginner': (context) => const BeginnerPage(),
         '/intermediate': (context) => const IntermediatePage(),
         '/advance': (context) => const AdvancedPage(),
@@ -86,8 +89,8 @@ class MyApp extends StatelessWidget {
         '/calculatorCategories': (context) => calculatorCategories(),
       },
       debugShowCheckedModeBanner: false,
-      home: const HomepageNavbar(),
-      // home: const OnBoardingScreen(),
+      // home: const HomepageNavbar(),
+      home: const OnBoardingScreen(),
       // home: const SignUp(),
       // home: const workoutCategoriesPage(),
       //home: const NotificationPage(),

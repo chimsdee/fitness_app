@@ -44,6 +44,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/file_selector_windows/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/url_launcher_windows/cmake_install.cmake")
 endif()
 
@@ -152,34 +157,43 @@ endif()
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Runtime" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/url_launcher_windows_plugin.dll")
+     "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/file_selector_windows_plugin.dll;C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/url_launcher_windows_plugin.dll")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug" TYPE FILE FILES "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/url_launcher_windows/Debug/url_launcher_windows_plugin.dll")
+    file(INSTALL DESTINATION "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug" TYPE FILE FILES
+      "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/file_selector_windows/Debug/file_selector_windows_plugin.dll"
+      "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/url_launcher_windows/Debug/url_launcher_windows_plugin.dll"
+      )
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Pp][Rr][Oo][Ff][Ii][Ll][Ee])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Profile/url_launcher_windows_plugin.dll")
+     "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Profile/file_selector_windows_plugin.dll;C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Profile/url_launcher_windows_plugin.dll")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Profile" TYPE FILE FILES "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/url_launcher_windows/Profile/url_launcher_windows_plugin.dll")
+    file(INSTALL DESTINATION "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Profile" TYPE FILE FILES
+      "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/file_selector_windows/Profile/file_selector_windows_plugin.dll"
+      "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/url_launcher_windows/Profile/url_launcher_windows_plugin.dll"
+      )
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-     "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Release/url_launcher_windows_plugin.dll")
+     "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Release/file_selector_windows_plugin.dll;C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Release/url_launcher_windows_plugin.dll")
     if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Release" TYPE FILE FILES "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/url_launcher_windows/Release/url_launcher_windows_plugin.dll")
+    file(INSTALL DESTINATION "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Release" TYPE FILE FILES
+      "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/file_selector_windows/Release/file_selector_windows_plugin.dll"
+      "C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/plugins/url_launcher_windows/Release/url_launcher_windows_plugin.dll"
+      )
   endif()
 endif()
 

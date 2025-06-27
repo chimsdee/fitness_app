@@ -1,318 +1,94 @@
-// import 'package:flutter/material.dart';
+// ignore_for_file: depend_on_referenced_packages, file_names
 
-// class ProfilePage extends StatelessWidget {
-//   const ProfilePage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.black,
-//       appBar: AppBar(
-//         backgroundColor: Colors.black,
-//         leading: IconButton(
-//           icon: const Icon(
-//             Icons.arrow_back_ios,
-//             color: Colors.white,
-//             size: 20,
-//           ),
-//           onPressed: () {
-//             Navigator.pop(context);
-//           },
-//         ),
-//       ),
-//       body: Padding(
-//         padding: EdgeInsets.symmetric(
-//           horizontal: MediaQuery.of(context).size.width * 0.055,
-//           vertical: MediaQuery.of(context).size.height * 0.02,
-//         ),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children: [
-//                 const CircleAvatar(
-//                   radius: 50,
-//                   backgroundImage: AssetImage('assets/images/profile.jpg'),
-//                 ),
-//                 const RotatedBox(
-//                   quarterTurns: 1,
-//                   child: Divider(
-//                     color: Colors.white,
-//                     thickness: 2,
-//                   ),
-//                 ),
-//                 Container(
-//                   height: 90,
-//                   width: 130,
-//                   padding: const EdgeInsets.all(10),
-//                   child: const Column(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       Text(
-//                         'Joined',
-//                         style: TextStyle(
-//                           color: Colors.grey,
-//                           fontSize: 16,
-//                           fontWeight: FontWeight.bold,
-//                         ),
-//                       ),
-//                       Text(
-//                         'June 2025',
-//                         style: TextStyle(
-//                           color: Colors.white,
-//                           fontSize: 18,
-//                           fontWeight: FontWeight.bold,
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             const SizedBox(
-//               height: 20,
-//             ),
-//             const Text(
-//               'Chimsom \nDivine Elue',
-//               style: TextStyle(
-//                 color: Colors.white,
-//                 fontSize: 25,
-//                 fontWeight: FontWeight.bold,
-//               ),
-//             ),
-//             const SizedBox(
-//               height: 20,
-//             ),
-//             _buildDivider(),
-//             IconRow(
-//               text: 'Edit profile',
-//               onTap: () {
-//                 Navigator.pushNamed(context, '/edit');
-//               },
-//             ),
-//             const SizedBox(
-//               height: 8,
-//             ),
-//             _buildDivider(),
-//             const SizedBox(
-//               height: 8,
-//             ),
-//             IconRow(
-//               text: 'Privacy Policy',
-//               onTap: () {
-//                 Navigator.pushNamed(context, '/privacyPolicy');
-//               },
-//             ),
-//             const SizedBox(
-//               height: 8,
-//             ),
-//             _buildDivider(),
-//             const SizedBox(
-//               height: 8,
-//             ),
-//             IconRow(
-//               text: 'Settings',
-//               onTap: () {
-//                 Navigator.pushNamed(context, '/settings');
-//               },
-//             ),
-//             _buildDivider(),
-//             const SizedBox(
-//               height: 8,
-//             ),
-//             const Spacer(),
-//             GestureDetector(
-//               onTap: () async {},
-//               child: SizedBox(
-//                 height: 90,
-//                 width: double.infinity,
-//                 child: Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         Container(
-//                           padding: const EdgeInsets.symmetric(
-//                             horizontal: 6,
-//                             vertical: 2,
-//                           ),
-//                           decoration: BoxDecoration(
-//                             color: Colors.red,
-//                             borderRadius: BorderRadius.circular(10),
-//                           ),
-//                           child: const Text(
-//                             'Pro',
-//                             style: TextStyle(
-//                               color: Colors.white,
-//                               fontSize: 15,
-//                             ),
-//                           ),
-//                         ),
-//                         const Text(
-//                           'Upgrade to Pro',
-//                           style: TextStyle(
-//                             color: Colors.white,
-//                             fontSize: 18,
-//                           ),
-//                         ),
-//                         const Text(
-//                           'This subscription will auto-renew',
-//                           style: TextStyle(
-//                             color: Colors.white,
-//                             fontSize: 14,
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                     const Padding(
-//                       padding: EdgeInsets.all(10.0),
-//                       child: Icon(
-//                         Icons.arrow_forward_ios,
-//                         color: Colors.white,
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//             const Spacer(),
-//             _buildDivider(),
-//             TextButton(
-//               onPressed: () {
-//                 Navigator.pushNamed(context, '/login');
-//               },
-//               child: const Text(
-//                 'Sign Out',
-//                 style: TextStyle(
-//                   color: Colors.red,
-//                   fontSize: 20,
-//                 ),
-//               ),
-//             ),
-//             _buildDivider(),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   Widget _buildDivider() {
-//     return Divider(
-//       color: Colors.grey.withOpacity(0.15),
-//       thickness: 2,
-//       height: 16,
-//     );
-//   }
-// }
-
-// class IconRow extends StatelessWidget {
-//   const IconRow({
-//     super.key,
-//     required this.text,
-//     required this.onTap,
-//   });
-
-//   final String text;
-//   final Function onTap;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTap: () {
-//         onTap();
-//       },
-//       child: SizedBox(
-//         height: 30,
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             Text(
-//               text,
-//               style: const TextStyle(
-//                 color: Colors.white,
-//                 fontSize: 20,
-//               ),
-//             ),
-//             const Padding(
-//               padding: EdgeInsets.all(8.0),
-//               child: Icon(
-//                 Icons.arrow_forward_ios,
-//                 color: Colors.white,
-//                 size: 18,
-//               ),
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// ignore_for_file: file_names
-
+import 'package:fitness_app/screens/ProfilePage/PrivacyPolicy.dart';
+import 'package:fitness_app/screens/ProfilePage/SettingsPage.dart';
+import 'package:fitness_app/screens/ProfilePage/editProfile.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class ProfilePage extends StatelessWidget {
+void main() => runApp(const FitnessApp());
+
+class FitnessApp extends StatelessWidget {
+  const FitnessApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Fitness Pro',
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.black,
+          elevation: 0,
+        ),
+      ),
+      initialRoute: '/profile',
+      routes: {
+        '/profile': (context) => const ProfilePage(),
+        '/edit': (context) => const EditProfilePage(),
+        '/settings': (context) => const SettingsPage(),
+        '/privacyPolicy': (context) => const PrivacyPolicyPage(),
+        '/proUpgrade': (context) => const ProUpgradePage(),
+      },
+    );
+  }
+}
+
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  final String userName = "Chimsom Divine Elue";
+  final DateTime joinDate = DateTime(2025, 6, 15);
+  final String userImage = 'assets/images/profile.jpg';
+  final Map<String, String> healthStats = {
+    'BMI': '22.3',
+    'BMR': '1,650',
+    'H2O': '2.1L',
+  };
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final isSmallScreen = screenSize.width < 400;
-    final isLargeScreen = screenSize.width > 600;
-    final isPortrait = screenSize.height > screenSize.width;
+    final formattedDate = DateFormat('MMMM yyyy').format(joinDate);
+    final nameInitials = userName.split(' ').map((e) => e[0]).join();
 
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.white,
-            size: 20,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: screenSize.width * 0.05,
-            vertical: screenSize.height * 0.02,
+            vertical: 20,
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Profile Header Section
-              _buildProfileHeader(
-                  context, isSmallScreen, isLargeScreen, isPortrait),
+              // Profile Header
+              _buildProfileHeader(nameInitials, formattedDate, isSmallScreen),
 
-              SizedBox(height: isSmallScreen ? 16 : 20),
-
-              // Name Text
-              Text(
-                'Chimsom \nDivine Elue',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: isSmallScreen
-                      ? 22
-                      : isLargeScreen
-                          ? 28
-                          : 25,
-                  fontWeight: FontWeight.bold,
-                  height: 1.2,
+              // Centered Name
+              Center(
+                child: Text(
+                  userName,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: isSmallScreen ? 22 : 25,
+                    fontWeight: FontWeight.bold,
+                    height: 1.2,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
+              const SizedBox(height: 20),
 
-              SizedBox(height: isSmallScreen ? 16 : 20),
+              // Health Stats Preview
+              _buildHealthStatsRow(context, isSmallScreen),
 
-              _buildDivider(),
+              const Divider(color: Colors.grey, thickness: 0.5),
 
               // Menu Items
               Expanded(
@@ -322,23 +98,33 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       _buildMenuItem(
                         context: context,
-                        text: 'Edit profile',
+                        text: 'Edit Profile',
                         route: '/edit',
-                        isSmallScreen: isSmallScreen,
+                        icon: Icons.edit_attributes,
+                        subtitle: 'Name, photo, metrics',
                       ),
                       _buildDivider(),
                       _buildMenuItem(
                         context: context,
                         text: 'Privacy Policy',
                         route: '/privacyPolicy',
-                        isSmallScreen: isSmallScreen,
+                        icon: Icons.privacy_tip,
                       ),
                       _buildDivider(),
                       _buildMenuItem(
                         context: context,
                         text: 'Settings',
                         route: '/settings',
-                        isSmallScreen: isSmallScreen,
+                        icon: Icons.settings,
+                        subtitle: 'Notifications, theme',
+                      ),
+                      _buildDivider(),
+                      _buildMenuItem(
+                        context: context,
+                        text: 'Health Stats',
+                        route: '/healthStats',
+                        icon: Icons.monitor_heart,
+                        subtitle: 'BMI, BMR, Hydration',
                       ),
                       _buildDivider(),
                     ],
@@ -346,40 +132,23 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
 
-              // Pro Upgrade Section
-              _buildProUpgradeSection(isSmallScreen, isLargeScreen),
+              // Pro Upgrade Card
+              _buildProUpgradeSection(isSmallScreen),
 
-              SizedBox(height: isSmallScreen ? 8 : 12),
+              const SizedBox(height: 12),
+              const Divider(color: Colors.grey, thickness: 0.5),
 
-              _buildDivider(),
-
-              // Sign Out Button
-              SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.symmetric(
-                      vertical: isSmallScreen ? 12 : 16,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/login');
-                  },
-                  child: Text(
-                    'Sign Out',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: isSmallScreen
-                          ? 18
-                          : isLargeScreen
-                              ? 22
-                              : 20,
-                    ),
+              // Sign Out
+              TextButton(
+                onPressed: _confirmSignOut,
+                child: Text(
+                  'Sign Out',
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: isSmallScreen ? 16 : 18,
                   ),
                 ),
               ),
-
-              _buildDivider(),
             ],
           ),
         ),
@@ -387,255 +156,183 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileHeader(
-    BuildContext context,
-    bool isSmallScreen,
-    bool isLargeScreen,
-    bool isPortrait,
-  ) {
-    final avatarRadius = isLargeScreen
-        ? (isPortrait ? 60.0 : 50.0)
-        : isSmallScreen
-            ? 40.0
-            : 50.0;
+  // ... (Keep all other existing methods unchanged) ...
+  Widget _buildProfileHeader(String initials, String date, bool isSmallScreen) {
+    return Column(
+      children: [
+        Container(
+          width: isSmallScreen ? 80 : 100,
+          height: isSmallScreen ? 80 : 100,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.grey[800]!,
+              width: 2.0,
+            ),
+          ),
+          child: ClipOval(
+            child: userImage.isNotEmpty
+                ? Image.asset(
+                    userImage,
+                    fit: BoxFit.cover, // This ensures the image fills the space
+                    width: isSmallScreen ? 80 : 100,
+                    height: isSmallScreen ? 80 : 100,
+                  )
+                : Center(
+                    child: Text(
+                      initials,
+                      style: TextStyle(
+                        fontSize: isSmallScreen ? 20 : 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.calendar_today, color: Colors.grey, size: 16),
+            const SizedBox(width: 8),
+            Text(
+              'Joined $date',
+              style: const TextStyle(color: Colors.grey),
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
 
-    if (isSmallScreen) {
-      return Column(
-        children: [
-          CircleAvatar(
-            radius: avatarRadius,
-            backgroundColor: Colors.grey[800],
-            backgroundImage: const AssetImage(
-              'assets/images/profile.jpg',
-              package: 'your_package_name',
-            ),
-            onBackgroundImageError: (exception, stackTrace) =>
-                const Icon(Icons.person, size: 50, color: Colors.white),
-          ),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.calendar_today, color: Colors.grey, size: 16),
-              const SizedBox(width: 8),
-              Text(
-                'Joined June 2025',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: isPortrait ? 16 : 14,
-                ),
-              ),
-            ],
-          ),
-        ],
-      );
-    } else if (isLargeScreen) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          CircleAvatar(
-            radius: avatarRadius,
-            backgroundColor: Colors.grey[800],
-            backgroundImage: const AssetImage(
-              'assets/images/profile.jpg',
-              package: 'your_package_name',
-            ),
-            onBackgroundImageError: (exception, stackTrace) =>
-                const Icon(Icons.person, size: 70, color: Colors.white),
-          ),
-          const SizedBox(width: 30),
-          const VerticalDivider(
-            color: Colors.white,
-            thickness: 2,
-            indent: 10,
-            endIndent: 10,
-          ),
-          const SizedBox(width: 30),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildHealthStatsRow(BuildContext context, bool isSmallScreen) {
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, '/healthStats'),
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: healthStats.entries.map((entry) {
+            return Column(
               children: [
                 Text(
-                  'Joined',
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'June 2025',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      );
-    } else {
-      var screenSize = MediaQuery.of(context).size;
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CircleAvatar(
-            radius: avatarRadius,
-            backgroundColor: Colors.grey[800],
-            backgroundImage: const AssetImage(
-              'assets/images/profile.jpg',
-              package: 'your_package_name',
-            ),
-            onBackgroundImageError: (exception, stackTrace) =>
-                const Icon(Icons.person, size: 50, color: Colors.white),
-          ),
-          const RotatedBox(
-            quarterTurns: 1,
-            child: Divider(
-              color: Colors.white,
-              thickness: 2,
-            ),
-          ),
-          Container(
-            constraints: BoxConstraints(maxWidth: screenSize.width * 0.35),
-            padding: const EdgeInsets.all(10),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Joined',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  'June 2025',
-                  style: TextStyle(
+                  entry.value,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                const SizedBox(height: 4),
+                Text(
+                  entry.key,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 14,
+                  ),
+                ),
               ],
-            ),
-          ),
-        ],
-      );
-    }
+            );
+          }).toList(),
+        ),
+      ),
+    );
   }
 
   Widget _buildMenuItem({
     required BuildContext context,
     required String text,
     required String route,
-    required bool isSmallScreen,
+    required IconData icon,
+    String? subtitle,
   }) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        Navigator.pushNamed(context, route);
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          vertical: isSmallScreen ? 12 : 16,
-          horizontal: 8,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              text,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: isSmallScreen ? 18 : 20,
-              ),
-            ),
-            const Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.white,
-              size: 18,
-            ),
-          ],
-        ),
-      ),
+    return ListTile(
+      leading: Icon(icon, color: Colors.white),
+      title: Text(text, style: const TextStyle(color: Colors.white)),
+      subtitle: subtitle != null
+          ? Text(subtitle, style: const TextStyle(color: Colors.grey))
+          : null,
+      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+      onTap: () => Navigator.pushNamed(context, route),
     );
   }
 
-  Widget _buildProUpgradeSection(bool isSmallScreen, bool isLargeScreen) {
-    return GestureDetector(
-      onTap: () async {},
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          vertical: isSmallScreen ? 12 : 16,
-          horizontal: 8,
+  Widget _buildProUpgradeSection(bool isSmallScreen) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFF6A11CB), Color(0xFF2575FC)],
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Text(
-                    'Pro',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-                SizedBox(height: isSmallScreen ? 6 : 8),
-                Text(
-                  'Upgrade to Pro',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: isSmallScreen
-                        ? 16
-                        : isLargeScreen
-                            ? 20
-                            : 18,
-                  ),
-                ),
-                Text(
-                  'This subscription will auto-renew',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: isSmallScreen ? 12 : 14,
-                  ),
-                ),
-              ],
-            ),
-            const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.white,
-              ),
-            ),
-          ],
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: ListTile(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        leading: const Icon(Icons.star, color: Colors.yellow, size: 32),
+        title: const Text(
+          "UPGRADE TO PRO",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
         ),
+        subtitle: const Text(
+          "Unlock all premium features",
+          style: TextStyle(color: Colors.white70),
+        ),
+        trailing: const Icon(Icons.arrow_forward, color: Colors.white),
+        onTap: () => Navigator.pushNamed(context, '/proUpgrade'),
       ),
     );
   }
 
   Widget _buildDivider() {
-    return Divider(
-      color: Colors.grey.withOpacity(0.15),
-      thickness: 2,
+    return const Divider(
+      color: Colors.grey,
       height: 1,
+      thickness: 0.5,
+    );
+  }
+
+  void _confirmSignOut() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Sign Out"),
+        content: const Text("Are you sure you want to sign out?"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, '/login');
+            },
+            child: const Text(
+              "Sign Out",
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Minimal implementation for ProUpgradePage to resolve the error.
+class ProUpgradePage extends StatelessWidget {
+  const ProUpgradePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Go Pro")),
+      body: const Center(child: Text("Pro Upgrade Page")),
     );
   }
 }
