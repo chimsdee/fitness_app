@@ -1,4 +1,11 @@
+import 'package:fitness_app/bmiCalculator.dart';
+import 'package:fitness_app/bmrCalculator.dart';
+import 'package:fitness_app/bodyfat_calc.dart';
+import 'package:fitness_app/hydration_calc.dart';
+import 'package:fitness_app/idealweight_calc.dart';
+import 'package:fitness_app/screens/calculatorCategories.dart';
 import 'package:fitness_app/screens/warmups.dart';
+import 'package:fitness_app/tdee_calc.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/screens/Login%20SignUp/LoginSignUp.dart';
 import 'package:fitness_app/screens/ProfilePage/Languages.dart';
@@ -23,6 +30,7 @@ import 'package:fitness_app/screens/heightScreen/heightScreen.dart';
 import 'package:fitness_app/screens/weightScreen/weightScreen.dart';
 import 'package:fitness_app/screens/goalScreen/goalScreen.dart';
 import 'package:fitness_app/screens/activityLevelScreen/activityLevelScreen.dart';
+
 // ignore: unused_import
 import 'package:fitness_app/screens/Login%20SignUp/forgotPassword.dart';
 // ignore: unused_import
@@ -68,11 +76,19 @@ class MyApp extends StatelessWidget {
         '/intermediate': (context) => const IntermediatePage(),
         '/advance': (context) => const AdvancedPage(),
         '/warmups': (context) => const WarmUpsPage(),
+        '/bmiCalculator': (context) => const BMICalculatorPage(),
+        '/bmrCalculator': (context) => const BMRCalculatorPage(),
+        '/tdeeCalculator': (context) => const TDEECalculatorPage(),
+        '/bodyfatCalculator': (context) => const BodyFatCalculatorPage(),
+        '/idealWeightCalculator': (context) =>
+            const IdealWeightCalculatorPage(),
+        '/hydrationCalculator': (context) => const HydrationCalculatorPage(),
+        '/calculatorCategories': (context) => calculatorCategories(),
       },
       debugShowCheckedModeBanner: false,
-      // home: const HomepageNavbar(),
+      home: const HomepageNavbar(),
       // home: const OnBoardingScreen(),
-      home: const SignUp(),
+      // home: const SignUp(),
       // home: const workoutCategoriesPage(),
       //home: const NotificationPage(),
     );
