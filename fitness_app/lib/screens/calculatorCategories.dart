@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 
-import 'package:fitness_app/bmiCalculator.dart';
-import 'package:fitness_app/bmrCalculator.dart';
-import 'package:fitness_app/bodyfat_calc.dart';
+import 'package:fitness_app/screens/Calculators/bmiCalculator.dart';
+import 'package:fitness_app/screens/Calculators/bmrCalculator.dart';
+import 'package:fitness_app/screens/Calculators/bodyfat_calc.dart';
 import 'package:fitness_app/constants/color.dart';
-import 'package:fitness_app/hydration_calc.dart';
-import 'package:fitness_app/idealweight_calc.dart';
-import 'package:fitness_app/tdee_calc.dart';
+import 'package:fitness_app/screens/Calculators/hydration_calc.dart';
+import 'package:fitness_app/screens/Calculators/idealweight_calc.dart';
+import 'package:fitness_app/screens/Calculators/tdee_calc.dart';
 
 import 'package:flutter/material.dart';
 

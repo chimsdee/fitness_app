@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 
 import 'package:fitness_app/constants/color.dart';
-import 'package:fitness_app/screens/advanced.dart';
-import 'package:fitness_app/screens/beginner.dart';
-import 'package:fitness_app/screens/core.dart';
-import 'package:fitness_app/screens/hiit.dart';
-import 'package:fitness_app/screens/intermediate.dart';
-import 'package:fitness_app/screens/yoga.dart';
+import 'package:fitness_app/screens/Workouts/advanced.dart';
+import 'package:fitness_app/screens/Workouts/beginner.dart';
+import 'package:fitness_app/screens/Workouts/core.dart';
+import 'package:fitness_app/screens/Workouts/hiit.dart';
+import 'package:fitness_app/screens/Workouts/intermediate.dart';
+import 'package:fitness_app/screens/Workouts/yoga.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types

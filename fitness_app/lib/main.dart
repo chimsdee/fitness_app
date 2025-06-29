@@ -1,12 +1,12 @@
-import 'package:fitness_app/bmiCalculator.dart';
-import 'package:fitness_app/bmrCalculator.dart';
-import 'package:fitness_app/bodyfat_calc.dart';
-import 'package:fitness_app/hydration_calc.dart';
-import 'package:fitness_app/idealweight_calc.dart';
+import 'package:fitness_app/screens/Calculators/bmiCalculator.dart';
+import 'package:fitness_app/screens/Calculators/bmrCalculator.dart';
+import 'package:fitness_app/screens/Calculators/bodyfat_calc.dart';
+import 'package:fitness_app/screens/Calculators/hydration_calc.dart';
+import 'package:fitness_app/screens/Calculators/idealweight_calc.dart';
 import 'package:fitness_app/screens/ProfilePage/UnitsOfMeasure.dart';
 import 'package:fitness_app/screens/calculatorCategories.dart';
-import 'package:fitness_app/screens/warmups.dart';
-import 'package:fitness_app/tdee_calc.dart';
+import 'package:fitness_app/screens/Workouts/warmups.dart';
+import 'package:fitness_app/screens/Calculators/tdee_calc.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/screens/Login%20SignUp/LoginSignUp.dart';
 import 'package:fitness_app/screens/ProfilePage/Languages.dart';
@@ -19,12 +19,12 @@ import 'package:fitness_app/screens/ProfilePage/editProfile.dart'
     as edit_profile;
 import 'package:fitness_app/screens/ProfilePage/profilePage.dart';
 import 'package:fitness_app/screens/ProfilePage/settings_Notifications.dart';
-import 'package:fitness_app/screens/advanced.dart';
-import 'package:fitness_app/screens/beginner.dart';
+import 'package:fitness_app/screens/Workouts/advanced.dart';
+import 'package:fitness_app/screens/Workouts/beginner.dart';
 import 'package:fitness_app/screens/homeScreen/Notifications.dart';
 import 'package:fitness_app/screens/homeScreen/bottomNavigationBar.dart';
 import 'package:fitness_app/screens/homeScreen/homeScreen.dart';
-import 'package:fitness_app/screens/intermediate.dart';
+import 'package:fitness_app/screens/Workouts/intermediate.dart';
 import 'package:fitness_app/screens/workoutCategories.dart';
 import 'package:fitness_app/screens/OnBoardingScreen/onBoardingScreen.dart';
 import 'package:fitness_app/screens/genderScreen/genderScreen.dart';
@@ -89,8 +89,8 @@ class MyApp extends StatelessWidget {
         '/calculatorCategories': (context) => calculatorCategories(),
       },
       debugShowCheckedModeBanner: false,
-      // home: const HomepageNavbar(),
-      home: const OnBoardingScreen(),
+      home: const HomepageNavbar(),
+      // home: const OnBoardingScreen(),
       // home: const SignUp(),
       // home: const workoutCategoriesPage(),
       //home: const NotificationPage(),

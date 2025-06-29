@@ -430,13 +430,13 @@
 
 // ignore_for_file: file_names, unnecessary_import
 
-import 'package:fitness_app/bmrCalculator.dart';
+import 'package:fitness_app/screens/Calculators/bmrCalculator.dart';
 import 'package:fitness_app/constants/color.dart';
 import 'package:fitness_app/constants/padding_margin.dart';
-import 'package:fitness_app/screens/advanced.dart';
-import 'package:fitness_app/screens/beginner.dart';
-import 'package:fitness_app/bmiCalculator.dart';
-import 'package:fitness_app/screens/intermediate.dart';
+import 'package:fitness_app/screens/Workouts/advanced.dart';
+import 'package:fitness_app/screens/Workouts/beginner.dart';
+import 'package:fitness_app/screens/Calculators/bmiCalculator.dart';
+import 'package:fitness_app/screens/Workouts/intermediate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
