@@ -67,7 +67,7 @@
 import 'package:fitness_app/Provider/user_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fitness_app/models/DetailPageButton.dart.dart';
+import 'package:fitness_app/models/DetailPageButton.dart';
 import 'package:fitness_app/models/DetailPageTitle.dart';
 import 'package:fitness_app/constants/color.dart'; // assuming you have PrimaryColor here
 import 'package:provider/provider.dart';

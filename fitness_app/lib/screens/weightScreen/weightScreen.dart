@@ -2,7 +2,7 @@
 
 import 'package:fitness_app/Provider/user_provider.dart';
 import 'package:fitness_app/constants/color.dart';
-import 'package:fitness_app/models/DetailPageButton.dart.dart';
+import 'package:fitness_app/models/DetailPageButton.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/models/DetailPageTitle.dart';
 import 'package:provider/provider.dart';

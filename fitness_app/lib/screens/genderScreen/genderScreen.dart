@@ -1,7 +1,7 @@
 // ignore_for_file: file_names, avoid_print
 
 import 'package:fitness_app/constants/color.dart';
-import 'package:fitness_app/models/DetailPageButton.dart.dart';
+import 'package:fitness_app/models/DetailPageButton.dart';
 import 'package:fitness_app/models/DetailPageTitle.dart';
 import 'package:flutter/material.dart';
 
@@ -84,7 +84,7 @@ class _GenderPageState extends State<GenderPage> {
   }
 }
 
-class GenderIcon extends StatelessWidget {
+class GenderIcon extends StatefulWidget {
   final IconData icon;
   final String title;
   final VoidCallback onTap;
@@ -99,37 +99,58 @@ class GenderIcon extends StatelessWidget {
   });
 
   @override
+  State<GenderIcon> createState() => _GenderIconState();
+}
+
+class _GenderIconState extends State<GenderIcon> {
+  bool _isHovering = false;
+
+  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(size.width * 0.05),
-        decoration: BoxDecoration(
-          color: isSelected ? PrimaryColor : Colors.transparent,
-          shape: BoxShape.circle,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Icon(
-                icon,
-                size: size.width * 0.1,
-                color: isSelected ? Colors.black : Colors.white,
-              ),
-              SizedBox(
-                height: size.height * 0.01,
-              ),
-              Text(
-                title,
-                style: TextStyle(
-                  color: isSelected ? Colors.black : Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovering = true),
+      onExit: (_) => setState(() => _isHovering = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: EdgeInsets.all(size.width * 0.05),
+          decoration: BoxDecoration(
+            color: widget.isSelected ? PrimaryColor : Colors.transparent,
+            shape: BoxShape.circle,
+            boxShadow: (widget.isSelected || _isHovering)
+                ? [
+                    BoxShadow(
+                      color: PrimaryColor.withOpacity(0.5),
+                      spreadRadius: _isHovering ? 10 : 5,
+                      blurRadius: _isHovering ? 20 : 10,
+                    ),
+                  ]
+                : null,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Icon(
+                  widget.icon,
+                  size: size.width * 0.1,
+                  color: widget.isSelected ? Colors.black : Colors.white,
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: size.height * 0.01,
+                ),
+                Text(
+                  widget.title,
+                  style: TextStyle(
+                    color: widget.isSelected ? Colors.black : Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
