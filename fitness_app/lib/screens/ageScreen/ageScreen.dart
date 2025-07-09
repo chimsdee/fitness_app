@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, unnecessary_import, prefer_const_constructors
+// ignore_for_file: file_names, unnecessary_import, prefer_const_constructors, unused_element
 
 import 'package:fitness_app/Provider/user_provider.dart';
 import 'package:fitness_app/constants/color.dart';
