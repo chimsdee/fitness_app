@@ -3,6 +3,7 @@
 import 'package:fitness_app/screens/ProfilePage/PrivacyPolicy.dart';
 import 'package:fitness_app/screens/ProfilePage/SettingsPage.dart';
 import 'package:fitness_app/screens/ProfilePage/editProfile.dart';
+import 'package:fitness_app/screens/ProfilePage/ProUpgradePage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

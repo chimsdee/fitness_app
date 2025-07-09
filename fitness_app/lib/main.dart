@@ -33,6 +33,8 @@ import 'package:fitness_app/screens/heightScreen/heightScreen.dart';
 import 'package:fitness_app/screens/weightScreen/weightScreen.dart';
 import 'package:fitness_app/screens/goalScreen/goalScreen.dart';
 import 'package:fitness_app/screens/activityLevelScreen/activityLevelScreen.dart';
+import 'package:fitness_app/screens/ProfilePage/ProUpgradePage.dart'
+    as pro_upgrade_page;
 
 // ignore: unused_import
 import 'package:fitness_app/screens/Login%20SignUp/forgotPassword.dart';
@@ -87,10 +89,11 @@ class MyApp extends StatelessWidget {
             const IdealWeightCalculatorPage(),
         '/hydrationCalculator': (context) => const HydrationCalculatorPage(),
         '/calculatorCategories': (context) => calculatorCategories(),
+        '/proUpgrade': (context) => const pro_upgrade_page.ProUpgradePage(),
       },
       debugShowCheckedModeBanner: false,
-      // home: const HomepageNavbar(),
-      home: const OnBoardingScreen(),
+      home: const HomepageNavbar(),
+      // home: const OnBoardingScreen(),
       // home: const SignUp(),
       // home: const workoutCategoriesPage(),
       //home: const NotificationPage(),
