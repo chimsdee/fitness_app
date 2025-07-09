@@ -94,6 +94,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           },
                           child: const Text(
                             'Get Started',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,

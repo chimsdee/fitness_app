@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages, file_names
+// ignore_for_file: depend_on_referenced_packages, file_names, unused_import
 
 import 'package:fitness_app/screens/ProfilePage/PrivacyPolicy.dart';
 import 'package:fitness_app/screens/ProfilePage/SettingsPage.dart';

@@ -56,6 +56,7 @@ C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windo
 C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/intermediate.webp
 C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/profile.jpg
 C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/tdee.jpg
+C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/www.svg
 C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/yoga.jpeg
 C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/data/flutter_assets/assets/onBoardingImages/man%201.webp
 C:/Users/CHIMSOM ELUE/Desktop/FTA (fitness tracking app)/fitness_app/build/windows/x64/runner/Debug/data/flutter_assets/assets/onBoardingImages/man%202.webp

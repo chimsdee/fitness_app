@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison, file_names, use_super_parameters, unused_import
+// ignore_for_file: unnecessary_null_comparison, file_names, use_super_parameters, unused_import,  avoid_print
 
 import 'package:fitness_app/constants/color.dart';
 import 'package:fitness_app/screens/OnBoardingScreen/onBoardingScreen.dart';
@@ -20,6 +20,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final PageController _pageController = PageController();
+  bool _obscurePassword = true; // Added to track password visibility
 
   @override
   void dispose() {
@@ -59,8 +60,18 @@ class _SignUpState extends State<SignUp> {
         MaterialPageRoute(
           builder: (context) => const HomepageNavbar(),
         ),
-      ); // <-- Navigates to home screen after successful signup
+      );
     }
+  }
+
+  void _handleGoogleSignIn() {
+    // Placeholder for Google sign in functionality
+    print('Continue with Google');
+  }
+
+  void _handleAppleSignIn() {
+    // Placeholder for Apple sign in functionality
+    print('Continue with Apple');
   }
 
   @override
@@ -195,7 +206,7 @@ class _SignUpState extends State<SignUp> {
                         SizedBox(height: size.height * 0.03),
                         TextField(
                           controller: _passwordController,
-                          obscureText: true,
+                          obscureText: _obscurePassword,
                           decoration: InputDecoration(
                             hintText: "Password",
                             hintStyle: TextStyle(
@@ -211,6 +222,19 @@ class _SignUpState extends State<SignUp> {
                               borderSide: BorderSide(
                                 color: Colors.grey.shade300,
                               ),
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscurePassword
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: Colors.grey,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _obscurePassword = !_obscurePassword;
+                                });
+                              },
                             ),
                           ),
                         ),
@@ -232,44 +256,92 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ],
                         ),
-                        SizedBox(height: size.height * 0.075),
+                        SizedBox(height: size.height * 0.001),
+                        // "OR" divider
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Container(
-                              height: size.height * 0.07,
-                              width: size.height * 0.07,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[800],
-                                borderRadius: BorderRadius.circular(25),
+                            Expanded(
+                              child: Divider(
+                                color: Colors.grey.shade800,
+                                thickness: 1,
                               ),
-                              child: TextButton(
-                                onPressed: () {},
-                                child: Image.asset(
-                                  'assets/images/google.png',
-                                  color: Colors.white,
-                                  height: size.height * 0.05,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Text(
+                                "OR",
+                                style: TextStyle(
+                                  color: Colors.grey.shade500,
+                                  fontSize: 16,
                                 ),
                               ),
                             ),
-                            SizedBox(width: size.width * 0.05),
-                            Container(
-                              height: size.height * 0.07,
-                              width: size.height * 0.07,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[800],
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              child: TextButton(
-                                onPressed: () {},
-                                child: Image.asset(
-                                  'assets/images/apple.png',
-                                  color: Colors.white,
-                                  height: size.height * 0.05,
-                                ),
+                            Expanded(
+                              child: Divider(
+                                color: Colors.grey.shade800,
+                                thickness: 1,
                               ),
                             ),
-                            const Expanded(child: SizedBox.shrink()),
+                          ],
+                        ),
+                        SizedBox(height: size.height * 0.03),
+                        // Social login buttons
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton.icon(
+                              onPressed: _handleGoogleSignIn,
+                              icon: Image.asset(
+                                'assets/images/google.png',
+                                height: 24,
+                              ),
+                              label: const Text(
+                                "Continue with Google",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 12),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: size.height * 0.02),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton.icon(
+                              onPressed: _handleAppleSignIn,
+                              icon: Image.asset(
+                                'assets/images/apple.png',
+                                height: 24,
+                                color: Colors.white,
+                              ),
+                              label: const Text(
+                                "Continue with Apple",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                  side: BorderSide(color: Colors.grey.shade800),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 12),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: size.height * 0.03),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
                             Container(
                               height: size.height * 0.06,
                               width: size.width * 0.3,
@@ -330,7 +402,7 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                         ),
-                        SizedBox(height: size.height * 0.03),
+                        SizedBox(height: size.height * 0.001),
                         TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
@@ -351,10 +423,10 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                         ),
-                        SizedBox(height: size.height * 0.03),
+                        SizedBox(height: size.height * 0.001),
                         TextField(
                           controller: _passwordController,
-                          obscureText: true,
+                          obscureText: _obscurePassword,
                           decoration: InputDecoration(
                             hintText: "Password",
                             hintStyle: TextStyle(
@@ -371,46 +443,89 @@ class _SignUpState extends State<SignUp> {
                                 color: Colors.grey.shade300,
                               ),
                             ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscurePassword
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: Colors.grey,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _obscurePassword = !_obscurePassword;
+                                });
+                              },
+                            ),
                           ),
                         ),
-                        SizedBox(height: size.height * 0.075),
+                        SizedBox(height: size.height * 0.01),
+                        // "OR" divider
+                        Center(
+                          child: Text(
+                            "OR",
+                            style: TextStyle(
+                              color: Colors.grey.shade500,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: size.height * 0.01),
+                        // Social signup buttons
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              height: size.height * 0.07,
-                              width: size.height * 0.07,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[800],
-                                borderRadius: BorderRadius.circular(25),
+                            ElevatedButton.icon(
+                              onPressed: _handleGoogleSignIn,
+                              icon: Image.asset(
+                                'assets/images/google.png',
+                                height: 24,
                               ),
-                              child: TextButton(
-                                onPressed: () {},
-                                child: Image.asset(
-                                  'assets/images/google.png',
-                                  color: Colors.white,
-                                  height: size.height * 0.05,
+                              label: const Text(
+                                "Continue with Google",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 12),
                               ),
                             ),
-                            SizedBox(width: size.width * 0.05),
-                            Container(
-                              height: size.height * 0.07,
-                              width: size.height * 0.07,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[800],
-                                borderRadius: BorderRadius.circular(25),
+                          ],
+                        ),
+                        SizedBox(height: size.height * 0.02),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton.icon(
+                              onPressed: _handleAppleSignIn,
+                              icon: Image.asset(
+                                'assets/images/apple.png',
+                                height: 24,
+                                color: Colors.white,
                               ),
-                              child: TextButton(
-                                onPressed: () {},
-                                child: Image.asset(
-                                  'assets/images/apple.png',
-                                  color: Colors.white,
-                                  height: size.height * 0.05,
+                              label: const Text(
+                                "Continue with Apple",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                  side: BorderSide(color: Colors.grey.shade800),
                                 ),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 12),
                               ),
                             ),
-                            const Expanded(child: SizedBox.shrink()),
+                          ],
+                        ),
+                        SizedBox(height: size.height * 0.03),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
                             Container(
                               height: size.height * 0.06,
                               width: size.width * 0.3,
