@@ -36,12 +36,9 @@ class _ProUpgradePageState extends State<ProUpgradePage> {
     setState(() => _isLoading = true);
 
     try {
-      // IMPORTANT: Replace these with your actual credentials
-      // Use an app password, not your regular Gmail password
-      // See: https://support.google.com/accounts/answer/185833
       final smtpServer = gmail(
-        'chimsom09@gmail.com', // Your Gmail address
-        'wxsd esoi rqxe kkse', // 16-character app password
+        'chimsom09@gmail.com',
+        'wxsd esoi rqxe kkse', // my 16-character app password
       );
 
       final message = Message()

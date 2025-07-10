@@ -20,7 +20,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final PageController _pageController = PageController();
-  bool _obscurePassword = true; // Added to track password visibility
+  bool _obscurePassword = true;
 
   @override
   void dispose() {
@@ -51,10 +51,6 @@ class _SignUpState extends State<SignUp> {
     if (_nameController.text.isNotEmpty &&
         _emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty) {
-      // Implement your sign up logic here
-      // Example: AuthProvider.signUpUser(_nameController.text, _emailController.text, _passwordController.text);
-
-      // Navigate to homepage after signup
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -65,12 +61,10 @@ class _SignUpState extends State<SignUp> {
   }
 
   void _handleGoogleSignIn() {
-    // Placeholder for Google sign in functionality
     print('Continue with Google');
   }
 
   void _handleAppleSignIn() {
-    // Placeholder for Apple sign in functionality
     print('Continue with Apple');
   }
 

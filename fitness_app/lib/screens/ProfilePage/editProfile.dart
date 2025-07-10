@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fitness_app/constants/color.dart';
-import 'package:image_picker/image_picker.dart'; // Add to pubspec.yaml
+import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class EditProfilePage extends StatefulWidget {
@@ -21,7 +21,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   String? _selectedGoal;
   final _formKey = GlobalKey<FormState>();
 
-  // Fitness goals
   final List<String> _fitnessGoals = [
     'Lose Weight',
     'Build Muscle',
@@ -157,11 +156,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               const SizedBox(height: 30),
 
-              // Fitness Info Section
               _buildSectionHeader('Fitness Metrics'),
               const SizedBox(height: 15),
 
-              // Height and Weight Row
               Row(
                 children: [
                   Expanded(

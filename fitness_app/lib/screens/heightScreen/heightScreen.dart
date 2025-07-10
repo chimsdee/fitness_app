@@ -1,75 +1,9 @@
-// import 'package:fitness_app/models/DetailPageButton.dart.dart';
-// import 'package:fitness_app/models/DetailPageTitle.dart';
-// import 'package:fitness_app/models/ListWheelViewScroller.dart';
-// import 'package:flutter/material.dart';
-
-// class HeightPage extends StatefulWidget {
-//   const HeightPage({super.key});
-
-//   @override
-//   State<HeightPage> createState() => _HeightPageState();
-// }
-
-// ignore_for_file: file_names, unnecessary_import, avoid_print
-
-// class _HeightPageState extends State<HeightPage> {
-//   int height = 170; // Default height in cm
-//   @override
-//   Widget build(BuildContext context) {
-//     List<String> items = [];
-//     for (int i = 1; i <= 200; i++) {
-//       items.add('$i cm');
-//     }
-//     var size = MediaQuery.of(context).size;
-//     return Scaffold(
-//       backgroundColor: Colors.black,
-//       body: Container(
-//         width: size.width,
-//         height: size.height,
-//         padding: EdgeInsets.only(
-//           top: size.height * 0.06,
-//           left: size.width * 0.05,
-//           right: size.width * 0.05,
-//           bottom: size.width * 0.03,
-//         ),
-//         child: Column(
-//           children: [
-//             DetailPageTitle(
-//               text: 'This will help us create a personalized plan for you',
-//               title: 'What is your Height?',
-//               color: Colors.white,
-//             ),
-//             SizedBox(
-//               height: size.height * 0.055,
-//             ),
-//             SizedBox(
-//               height: size.height * 0.5,
-//               child: listWheelScrollView(
-//                 items: items,
-//               ),
-//             ),
-//             DetailPageButton(
-//               text: 'Next',
-//               onTap: () {
-//                 Navigator.pushNamed(context, '/goal');
-//               },
-//               showbackButton: true,
-//               onBackTap: () {
-//                 Navigator.pop(context);
-//               },
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 import 'package:fitness_app/Provider/user_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/models/DetailPageButton.dart';
 import 'package:fitness_app/models/DetailPageTitle.dart';
-import 'package:fitness_app/constants/color.dart'; // assuming you have PrimaryColor here
+import 'package:fitness_app/constants/color.dart';
 import 'package:provider/provider.dart';
 
 class HeightPage extends StatefulWidget {
