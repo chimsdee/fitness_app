@@ -1,3 +1,4 @@
+// ignore_for_file: unnecessary_import, file_names, avoid_print
 import 'package:fitness_app/Provider/user_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
