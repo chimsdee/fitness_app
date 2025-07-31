@@ -126,7 +126,7 @@ class _ProUpgradePageState extends State<ProUpgradePage> {
               _buildFeatureItem("Priority Support", Icons.support_agent),
               const SizedBox(height: 30),
               const Text(
-                "Only \$9.99/month",
+                "Only £9.99/month",
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
