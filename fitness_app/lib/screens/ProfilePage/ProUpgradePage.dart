@@ -1,7 +1,9 @@
-// ignore_for_file: file_names
+// ignore_for_file: use_build_context_synchronously, file_names, unused_element
 
+import 'package:fitness_app/screens/ProfilePage/profilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/constants/color.dart';
+import 'package:fitness_app/screens/homeScreen/bottomNavigationBar.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
@@ -17,8 +19,13 @@ class _ProUpgradePageState extends State<ProUpgradePage> {
   bool _isLoading = false;
   bool _upgradeSuccess = false;
 
-  Future<void> _sendUpgradeEmail() async {
-    final email = _emailController.text.trim();
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _sendUpgradeEmail(String email) async {
     if (email.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please enter your email')),
@@ -38,7 +45,7 @@ class _ProUpgradePageState extends State<ProUpgradePage> {
     try {
       final smtpServer = gmail(
         'chimsom09@gmail.com',
-        'wxsd esoi rqxe kkse', // my 16-character app password
+        'wxsd esoi rqxe kkse', // Your 16-character app password
       );
 
       final message = Message()
@@ -87,10 +94,151 @@ class _ProUpgradePageState extends State<ProUpgradePage> {
     }
   }
 
-  @override
-  void dispose() {
-    _emailController.dispose();
-    super.dispose();
+  void _showTransferPayment() {
+    setState(() => _isLoading = true);
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.black,
+          title: const Text(
+            'Pay via Bank Transfer',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            'Please transfer £9.99 to the following account:\n\nBank: Test Bank\nAccount Number: 1234567890\nAccount Name: Fitness App Pro\nReference: PRO_${DateTime.now().millisecondsSinceEpoch}\n\nNote: This is a test mode simulation.',
+            style: const TextStyle(color: Colors.white),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _showSuccessDialog();
+              },
+              child: const Text(
+                'Confirm Payment',
+                style: TextStyle(color: PrimaryColor),
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: PrimaryColor),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+    setState(() => _isLoading = false);
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.black,
+          title: const Text(
+            'Payment Successful',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Please confirm your email to receive the Pro upgrade confirmation.',
+                style: TextStyle(color: Colors.white),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  labelText: 'Confirm Email',
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[900],
+                ),
+                style: const TextStyle(color: Colors.white),
+                keyboardType: TextInputType.emailAddress,
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: PrimaryColor),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                await _sendUpgradeEmail(_emailController.text);
+                Navigator.of(context).pop();
+                if (_upgradeSuccess) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomepageNavbar(),
+                    ),
+                  );
+                }
+              },
+              child: const Text(
+                'OK',
+                style: TextStyle(color: PrimaryColor),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.black,
+          title: const Text(
+            'Payment Error',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(
+            message,
+            style: const TextStyle(color: Colors.white),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text(
+                'OK',
+                style: TextStyle(color: PrimaryColor),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -137,7 +285,7 @@ class _ProUpgradePageState extends State<ProUpgradePage> {
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
-                  labelText: 'Email for confirmation',
+                  labelText: 'Email for payment',
                   labelStyle: const TextStyle(color: Colors.grey),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -155,7 +303,7 @@ class _ProUpgradePageState extends State<ProUpgradePage> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: _isLoading ? null : _sendUpgradeEmail,
+                  onPressed: _isLoading ? null : _showTransferPayment,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF2575FC),
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -207,7 +355,12 @@ class _ProUpgradePageState extends State<ProUpgradePage> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfilePage(),
+                    ),
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     padding: const EdgeInsets.symmetric(vertical: 16),
