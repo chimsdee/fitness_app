@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison, file_names, use_super_parameters, unused_import,  avoid_print
+// ignore_for_file: unused_import, unnecessary_null_comparison, use_super_parameters, file_names
 
 import 'package:fitness_app/constants/color.dart';
 import 'package:fitness_app/screens/OnBoardingScreen/onBoardingScreen.dart';
@@ -19,6 +19,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _socialEmailController = TextEditingController();
   final PageController _pageController = PageController();
   bool _obscurePassword = true;
 
@@ -27,6 +28,7 @@ class _SignUpState extends State<SignUp> {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _socialEmailController.dispose();
     _pageController.dispose();
     super.dispose();
   }
@@ -60,12 +62,181 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
+  bool _isValidEmail(String email) {
+    // Basic email format validation
+    final RegExp emailRegex = RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    );
+    if (!emailRegex.hasMatch(email)) {
+      return false;
+    }
+
+    // Additional heuristic to reject random-looking usernames
+    String username = email.split('@')[0];
+    // Reject if username is too short or too long
+    if (username.length < 3 || username.length > 20) {
+      return false;
+    }
+    // Reject if username contains only consonants (indicating randomness)
+    final RegExp vowelCheck = RegExp(r'[aeiouAEIOU]');
+    if (!vowelCheck.hasMatch(username)) {
+      return false;
+    }
+    // Optionally, restrict to common domains
+    List<String> allowedDomains = [
+      'gmail.com',
+      'icloud.com',
+      'yahoo.com',
+      'outlook.com'
+    ];
+    String domain = email.split('@')[1].toLowerCase();
+    if (!allowedDomains.contains(domain)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  void _showEmailDialog(bool isLogin) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.black,
+          title: Text(
+            isLogin ? 'Welcome Back' : 'Hello New',
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: _socialEmailController,
+                decoration: InputDecoration(
+                  hintText: "Enter your email",
+                  hintStyle: TextStyle(
+                    color: Colors.grey[500],
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade800,
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: PrimaryColor),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                if (_isValidEmail(_socialEmailController.text)) {
+                  Navigator.of(context).pop();
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.black,
+                        title: Text(
+                          isLogin ? 'Welcome Back!' : 'Hello New!',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        content: Text(
+                          isLogin
+                              ? 'You’re all set to log in.'
+                              : 'You’re ready to sign up!',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomepageNavbar(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(color: PrimaryColor),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  Navigator.of(context).pop();
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.black,
+                        title: const Text(
+                          'Invalid Email',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        content: const Text(
+                          'Please enter a valid email address.',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(color: PrimaryColor),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
+              child: const Text(
+                'Submit',
+                style: TextStyle(color: PrimaryColor),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void _handleGoogleSignIn() {
-    print('Continue with Google');
+    _showEmailDialog(isLoginSelected);
   }
 
   void _handleAppleSignIn() {
-    print('Continue with Apple');
+    _showEmailDialog(isLoginSelected);
   }
 
   @override
