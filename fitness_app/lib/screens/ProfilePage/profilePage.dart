@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages, file_names, unused_import
+// ignore_for_file: depend_on_referenced_packages, file_names, unused_import, unnecessary_to_list_in_spreads
 
 import 'package:fitness_app/screens/ProfilePage/PrivacyPolicy.dart';
 import 'package:fitness_app/screens/ProfilePage/SettingsPage.dart';
@@ -123,7 +123,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       _buildMenuItem(
                         context: context,
                         text: 'Health Stats',
-                        route: '/healthStats',
+                        route: '/multiCalculatorFlow',
                         icon: Icons.monitor_heart,
                         subtitle: 'BMI, BMR, Hydration',
                       ),
@@ -209,33 +209,46 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildHealthStatsRow(BuildContext context, bool isSmallScreen) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, '/healthStats'),
+      onTap: () {
+        // Add a slight animation when pressed
+        Navigator.pushNamed(context, '/multiCalculatorFlow');
+      },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),
+        padding:
+            const EdgeInsets.all(8), // Add some padding for better tap area
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.grey[900]?.withOpacity(0.5),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: healthStats.entries.map((entry) {
-            return Column(
-              children: [
-                Text(
-                  entry.value,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+          children: [
+            ...healthStats.entries.map((entry) {
+              return Column(
+                children: [
+                  Text(
+                    entry.value,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  entry.key,
-                  style: const TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
+                  const SizedBox(height: 4),
+                  Text(
+                    entry.key,
+                    style: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                    ),
                   ),
-                ),
-              ],
-            );
-          }).toList(),
+                ],
+              );
+            }).toList(),
+            const Icon(Icons.arrow_forward,
+                color: Colors.grey), // Add arrow icon
+          ],
         ),
       ),
     );

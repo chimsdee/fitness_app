@@ -95,8 +95,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: const SignUp(),
       // home: const OnBoardingScreen(),
-      // home: const HomepageNavbar(),
-      home: const MultiCalculatorFlow(),
+      home: const HomepageNavbar(),
+      // home: const MultiCalculatorFlow(),
       //home: const NotificationPage(),
       // home: const workoutCategoriesPage(),
     );
