@@ -1,3 +1,4 @@
+import 'package:fitness_app/screens/Calculators/MultiCalculatorFlowPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/screens/Workouts/warmups.dart';
 import 'package:fitness_app/screens/workoutCategories.dart';
@@ -89,11 +90,13 @@ class MyApp extends StatelessWidget {
         '/privacyPolicy': (context) => const privacy_policy.PrivacyPolicyPage(),
         '/idealWeightCalculator': (context) =>
             const IdealWeightCalculatorPage(),
+        '/multiCalculatorFlow': (context) => const MultiCalculatorFlow(),
       },
       debugShowCheckedModeBanner: false,
       // home: const SignUp(),
       // home: const OnBoardingScreen(),
-      home: const HomepageNavbar(),
+      // home: const HomepageNavbar(),
+      home: const MultiCalculatorFlow(),
       //home: const NotificationPage(),
       // home: const workoutCategoriesPage(),
     );
