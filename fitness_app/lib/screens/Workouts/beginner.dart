@@ -54,7 +54,7 @@ class _BeginnerPageState extends State<BeginnerPage>
     Future.delayed(const Duration(seconds: 1), () {
       if (_timerSeconds > 0) {
         setState(() => _timerSeconds--);
-        _startTimer(); // Recursive call for countdown
+        _startTimer();
       } else {
         _exerciseCompleted();
       }
@@ -65,7 +65,7 @@ class _BeginnerPageState extends State<BeginnerPage>
     setState(() {
       _isTimerRunning = false;
       _completedExercises[_currentTabIndex] = true;
-      _timerSeconds = 3; // Reset timer
+      _timerSeconds = 3;
     });
     _showCompletionDialog();
   }
@@ -88,10 +88,9 @@ class _BeginnerPageState extends State<BeginnerPage>
               Navigator.pop(context);
               if (_currentTabIndex < 4) {
                 setState(() {
-                  // <-- Add this
-                  _currentTabIndex++; // Update the index first
+                  _currentTabIndex++;
                 });
-                _tabController.animateTo(_currentTabIndex); // Then move the tab
+                _tabController.animateTo(_currentTabIndex);
               } else {
                 _showWorkoutComplete();
               }
@@ -150,15 +149,12 @@ class _BeginnerPageState extends State<BeginnerPage>
       appBar: AppBar(title: const Text("Beginner Workouts")),
       body: Column(
         children: [
-          // Tab Bar
           TabBar(
             controller: _tabController,
             tabs: _exercises.map((e) => Tab(text: e)).toList(),
             isScrollable: true,
             onTap: (index) => setState(() => _currentTabIndex = index),
           ),
-
-          // Exercise Content
           Expanded(
             child: TabBarView(
               controller: _tabController,
@@ -167,8 +163,6 @@ class _BeginnerPageState extends State<BeginnerPage>
                   .toList(),
             ),
           ),
-
-          // Progress Tracker
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -182,7 +176,6 @@ class _BeginnerPageState extends State<BeginnerPage>
   }
 
   Widget _buildExerciseTab(String exercise) {
-    // Map exercise names to GIF filenames
     final gifPaths = {
       "Jumping Jack": "assets/exercises/jumping_jacks.gif",
       "Push-Ups": "assets/exercises/push_up.gif",
@@ -195,7 +188,6 @@ class _BeginnerPageState extends State<BeginnerPage>
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          // Exercise GIF with info button overlay
           Stack(
             children: [
               Container(
@@ -240,8 +232,6 @@ class _BeginnerPageState extends State<BeginnerPage>
               ),
             ],
           ),
-
-          // Timer and Start Button (keep existing code below)
           const SizedBox(height: 20),
           CircularPercentIndicator(
             radius: 100,
@@ -252,8 +242,6 @@ class _BeginnerPageState extends State<BeginnerPage>
             progressColor: PrimaryColor,
           ),
           const SizedBox(height: 20),
-
-          // Start Button
           ElevatedButton(
             onPressed: _isTimerRunning ? null : _startTimer,
             child: Text(_isTimerRunning ? "Running..." : "Start Exercise"),

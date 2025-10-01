@@ -45,7 +45,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   void _saveProfile() {
     if (_formKey.currentState!.validate()) {
-      // Save logic here (API call, Firebase, etc.)
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Profile updated successfully!')),
       );
@@ -84,7 +83,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              // Profile Picture with Edit Button
               GestureDetector(
                 onTap: _pickImage,
                 child: Stack(
@@ -130,12 +128,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
               ),
               const SizedBox(height: 30),
-
-              // Personal Info Section
               _buildSectionHeader('Personal Information'),
               const SizedBox(height: 15),
-
-              // Name Field
               _buildTextField(
                 controller: _nameController,
                 label: 'Full Name',
@@ -144,8 +138,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     value!.isEmpty ? 'Please enter your name' : null,
               ),
               const SizedBox(height: 20),
-
-              // Email Field
               _buildTextField(
                 controller: _emailController,
                 label: 'Email',
@@ -155,10 +147,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     !value!.contains('@') ? 'Enter a valid email' : null,
               ),
               const SizedBox(height: 30),
-
               _buildSectionHeader('Fitness Metrics'),
               const SizedBox(height: 15),
-
               Row(
                 children: [
                   Expanded(
@@ -185,8 +175,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ],
               ),
               const SizedBox(height: 20),
-
-              // Fitness Goal Dropdown
               DropdownButtonFormField<String>(
                 value: _selectedGoal,
                 dropdownColor: Colors.grey[900],
@@ -224,8 +212,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     value == null ? 'Please select a goal' : null,
               ),
               const SizedBox(height: 30),
-
-              // Save Button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

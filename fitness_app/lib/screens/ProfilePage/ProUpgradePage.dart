@@ -45,7 +45,7 @@ class _ProUpgradePageState extends State<ProUpgradePage> {
     try {
       final smtpServer = gmail(
         'chimsom09@gmail.com',
-        'wxsd esoi rqxe kkse', // Your 16-character app password
+        'wxsd esoi rqxe kkse', // this is my 16-character app password (don't forget it)
       );
 
       final message = Message()

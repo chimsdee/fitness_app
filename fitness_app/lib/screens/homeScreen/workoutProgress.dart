@@ -15,8 +15,7 @@ class _WorkoutProgressState extends State<WorkoutProgress> {
   final _firstController = CalendarSliderController();
   late DateTime _selectedDateAppBBar;
 
-  // Track which item is selected (0: steps, 1: time, 2: heart)
-  int _selectedWorkout = 1; // Default to Time Spent
+  int _selectedWorkout = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +69,6 @@ class _WorkoutProgressState extends State<WorkoutProgress> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Steps circle
                   Opacity(
                     opacity: _selectedWorkout == 0 ? 1.0 : 0.5,
                     child: CircularIndicatorText(
@@ -82,7 +80,6 @@ class _WorkoutProgressState extends State<WorkoutProgress> {
                       value: 0.8,
                     ),
                   ),
-                  // Time circle
                   Opacity(
                     opacity: _selectedWorkout == 1 ? 1.0 : 0.5,
                     child: CircularIndicatorText(
@@ -94,7 +91,6 @@ class _WorkoutProgressState extends State<WorkoutProgress> {
                       value: 0.45,
                     ),
                   ),
-                  // Heart circle
                   Opacity(
                     opacity: _selectedWorkout == 2 ? 1.0 : 0.5,
                     child: CircularIndicatorText(
@@ -126,7 +122,6 @@ class _WorkoutProgressState extends State<WorkoutProgress> {
               SizedBox(
                 height: size.height * 0.03,
               ),
-              // Steps Counted
               Opacity(
                 opacity: _selectedWorkout == 0 ? 1.0 : 0.5,
                 child: TextCheckboxContainer(
@@ -145,7 +140,6 @@ class _WorkoutProgressState extends State<WorkoutProgress> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              // Time Spent
               Opacity(
                 opacity: _selectedWorkout == 1 ? 1.0 : 0.5,
                 child: TextCheckboxContainer(
@@ -164,7 +158,6 @@ class _WorkoutProgressState extends State<WorkoutProgress> {
               SizedBox(
                 height: size.height * 0.03,
               ),
-              // Heart Rate
               Opacity(
                 opacity: _selectedWorkout == 2 ? 1.0 : 0.5,
                 child: TextCheckboxContainer(

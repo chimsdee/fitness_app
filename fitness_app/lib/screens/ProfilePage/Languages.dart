@@ -11,7 +11,7 @@ class LanguageSettings extends StatefulWidget {
 }
 
 class _LanguageSettingsState extends State<LanguageSettings> {
-  String? _selectedLanguage; // Tracks the selected language
+  String? _selectedLanguage;
 
   final List<String> _languages = [
     'English',
@@ -67,7 +67,6 @@ class _LanguageSettingsState extends State<LanguageSettings> {
         setState(() {
           _selectedLanguage = isSelected ? null : language;
         });
-        // Add your language change logic here
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),

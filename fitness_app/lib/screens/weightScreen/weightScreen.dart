@@ -70,11 +70,9 @@ class _WeightPageState extends State<WeightPage> {
                             overAndUnderCenterOpacity: 0.3,
                             physics: const FixedExtentScrollPhysics(),
                             controller: FixedExtentScrollController(
-                                initialItem: (500 - (weight * 2).round()) -
-                                    1), // Changed this line
+                                initialItem: (500 - (weight * 2).round()) - 1),
                             onSelectedItemChanged: (index) {
                               setState(() {
-                                // Invert the calculation to reverse the direction
                                 weight = (500 - (index + 1)) / 2;
                                 print("Scrolling - Current weight: $weight kg");
                               });

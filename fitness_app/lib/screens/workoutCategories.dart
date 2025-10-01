@@ -34,19 +34,19 @@ class workoutCategories extends StatelessWidget {
       title: "Yoga Flow",
       description: "Mindful movements for flexibility",
       image: "assets/images/yoga.jpeg",
-      page: const YogaPage(), // Replace with actual YogaPage()
+      page: const YogaPage(),
     ),
     WorkoutCategory(
       title: "HIIT Blast",
       description: "High intensity fat burning",
       image: "assets/images/hiit.jpeg",
-      page: const HighIntensityPage(), // Replace with HIITPage()
+      page: const HighIntensityPage(),
     ),
     WorkoutCategory(
       title: "Core Power",
       description: "Strengthen your foundation",
       image: "assets/images/core.jpeg",
-      page: const CorePowerPage(), // Replace with CorePage()
+      page: const CorePowerPage(),
     ),
   ];
 

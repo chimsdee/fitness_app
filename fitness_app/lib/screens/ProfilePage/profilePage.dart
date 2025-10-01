@@ -68,10 +68,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           child: Column(
             children: [
-              // Profile Header
               _buildProfileHeader(nameInitials, formattedDate, isSmallScreen),
-
-              // Centered Name
               Center(
                 child: Text(
                   userName,
@@ -85,13 +82,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               const SizedBox(height: 20),
-
-              // Health Stats Preview
               _buildHealthStatsRow(context, isSmallScreen),
-
               const Divider(color: Colors.grey, thickness: 0.5),
-
-              // Menu Items
               Expanded(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
@@ -132,14 +124,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-
-              // Pro Upgrade Card
               _buildProUpgradeSection(isSmallScreen),
-
               const SizedBox(height: 12),
               const Divider(color: Colors.grey, thickness: 0.5),
-
-              // Sign Out
               TextButton(
                 onPressed: _confirmSignOut,
                 child: Text(
@@ -157,7 +144,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // ... (Keep all other existing methods unchanged) ...
   Widget _buildProfileHeader(String initials, String date, bool isSmallScreen) {
     return Column(
       children: [
@@ -175,7 +161,7 @@ class _ProfilePageState extends State<ProfilePage> {
             child: userImage.isNotEmpty
                 ? Image.asset(
                     userImage,
-                    fit: BoxFit.cover, // This ensures the image fills the space
+                    fit: BoxFit.cover,
                     width: isSmallScreen ? 80 : 100,
                     height: isSmallScreen ? 80 : 100,
                   )
@@ -210,13 +196,11 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _buildHealthStatsRow(BuildContext context, bool isSmallScreen) {
     return GestureDetector(
       onTap: () {
-        // Add a slight animation when pressed
         Navigator.pushNamed(context, '/multiCalculatorFlow');
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),
-        padding:
-            const EdgeInsets.all(8), // Add some padding for better tap area
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: Colors.grey[900]?.withOpacity(0.5),
@@ -246,8 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ],
               );
             }).toList(),
-            const Icon(Icons.arrow_forward,
-                color: Colors.grey), // Add arrow icon
+            const Icon(Icons.arrow_forward, color: Colors.grey),
           ],
         ),
       ),
@@ -338,7 +321,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
-// Minimal implementation for ProUpgradePage to resolve the error.
 class ProUpgradePage extends StatelessWidget {
   const ProUpgradePage({super.key});
 

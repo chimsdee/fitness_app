@@ -63,7 +63,6 @@ class _SignUpState extends State<SignUp> {
   }
 
   bool _isValidEmail(String email) {
-    // Basic email format validation
     final RegExp emailRegex = RegExp(
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
     );
@@ -71,18 +70,16 @@ class _SignUpState extends State<SignUp> {
       return false;
     }
 
-    // Additional heuristic to reject random-looking usernames
+    
     String username = email.split('@')[0];
-    // Reject if username is too short or too long
+  
     if (username.length < 3 || username.length > 20) {
       return false;
     }
-    // Reject if username contains only consonants (indicating randomness)
     final RegExp vowelCheck = RegExp(r'[aeiouAEIOU]');
     if (!vowelCheck.hasMatch(username)) {
       return false;
     }
-    // Optionally, restrict to common domains
     List<String> allowedDomains = [
       'gmail.com',
       'icloud.com',
@@ -309,7 +306,7 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
 
-          // Title Text
+          
           Positioned(
             top: size.height * 0.40,
             child: SizedBox(
@@ -331,7 +328,7 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
 
-          // Login/Signup Forms
+          
           Positioned(
             top: size.height * 0.55,
             bottom: 0,
@@ -343,7 +340,6 @@ class _SignUpState extends State<SignUp> {
                 controller: _pageController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  // Login Page
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
@@ -422,7 +418,6 @@ class _SignUpState extends State<SignUp> {
                           ],
                         ),
                         SizedBox(height: size.height * 0.001),
-                        // "OR" divider
                         Row(
                           children: [
                             Expanded(
@@ -451,7 +446,6 @@ class _SignUpState extends State<SignUp> {
                           ],
                         ),
                         SizedBox(height: size.height * 0.03),
-                        // Social login buttons
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -542,7 +536,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
 
-                  // Signup Page
+                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
@@ -624,7 +618,6 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                         SizedBox(height: size.height * 0.01),
-                        // "OR" divider
                         Center(
                           child: Text(
                             "OR",
@@ -635,7 +628,6 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                         SizedBox(height: size.height * 0.01),
-                        // Social signup buttons
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

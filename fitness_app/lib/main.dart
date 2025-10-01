@@ -48,7 +48,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of my app.
+  // This widget is the root of my fitness tracking app.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

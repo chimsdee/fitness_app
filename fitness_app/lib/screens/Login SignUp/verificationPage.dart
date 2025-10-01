@@ -70,8 +70,6 @@ class _VerificationPageState extends State<VerificationPage> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: size.height * 0.05),
-
-              // Verification code input
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
@@ -109,7 +107,6 @@ class _VerificationPageState extends State<VerificationPage> {
                   ),
                 ),
               ),
-
               const Spacer(),
               Container(
                 width: size.width * 0.9,

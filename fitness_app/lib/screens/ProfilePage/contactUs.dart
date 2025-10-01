@@ -31,7 +31,6 @@ class ContactUsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // App Description Section
             const Text(
               'About FitnessTrack Pro',
               style: TextStyle(
@@ -52,8 +51,6 @@ class ContactUsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-
-            // Contact Information Section
             const Text(
               'Contact Information',
               style: TextStyle(
@@ -63,30 +60,22 @@ class ContactUsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
-            // Developer Card
             _buildInfoCard(
               icon: Icons.person,
               title: 'Software Developer',
               content: 'Chimsom Divine Elue',
             ),
             const SizedBox(height: 20),
-
-            // Phone Number
             _buildInfoRow(
               icon: Icons.phone,
               text: '+44 7449 270921',
             ),
             const SizedBox(height: 15),
-
-            // Email
             _buildInfoRow(
               icon: Icons.email,
               text: 'chimsom09@gmail.com',
             ),
             const SizedBox(height: 30),
-
-            // Business Hours
             const Text(
               'Business Hours',
               style: TextStyle(

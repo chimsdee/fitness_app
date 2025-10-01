@@ -54,7 +54,7 @@ class _AdvancedPageState extends State<AdvancedPage>
     Future.delayed(const Duration(seconds: 1), () {
       if (_timerSeconds > 0) {
         setState(() => _timerSeconds--);
-        _startTimer(); // Recursive call for countdown
+        _startTimer();
       } else {
         _exerciseCompleted();
       }
@@ -65,7 +65,7 @@ class _AdvancedPageState extends State<AdvancedPage>
     setState(() {
       _isTimerRunning = false;
       _completedExercises[_currentTabIndex] = true;
-      _timerSeconds = 3; // Reset timer
+      _timerSeconds = 3;
     });
     _showCompletionDialog();
   }
@@ -88,10 +88,9 @@ class _AdvancedPageState extends State<AdvancedPage>
               Navigator.pop(context);
               if (_currentTabIndex < 4) {
                 setState(() {
-                  // <-- Add this
-                  _currentTabIndex++; // Update the index first
+                  _currentTabIndex++;
                 });
-                _tabController.animateTo(_currentTabIndex); // Then move the tab
+                _tabController.animateTo(_currentTabIndex);
               } else {
                 _showWorkoutComplete();
               }
@@ -150,15 +149,12 @@ class _AdvancedPageState extends State<AdvancedPage>
       appBar: AppBar(title: const Text("Advanced Workout")),
       body: Column(
         children: [
-          // Tab Bar
           TabBar(
             controller: _tabController,
             tabs: _exercises.map((e) => Tab(text: e)).toList(),
             isScrollable: true,
             onTap: (index) => setState(() => _currentTabIndex = index),
           ),
-
-          // Exercise Content
           Expanded(
             child: TabBarView(
               controller: _tabController,
@@ -167,8 +163,6 @@ class _AdvancedPageState extends State<AdvancedPage>
                   .toList(),
             ),
           ),
-
-          // Progress Tracker
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text(
@@ -182,7 +176,6 @@ class _AdvancedPageState extends State<AdvancedPage>
   }
 
   Widget _buildExerciseTab(String exercise) {
-    // Map exercise names to GIF filenames
     final gifPaths = {
       "Pec Deck Fly": "assets/exercises/Pec-Deck-Fly.gif",
       "Dumbbell-Fly": "assets/exercises/Dumbbell-Fly.gif",
@@ -197,7 +190,6 @@ class _AdvancedPageState extends State<AdvancedPage>
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          // Exercise GIF
           Stack(
             children: [
               Container(
@@ -242,8 +234,6 @@ class _AdvancedPageState extends State<AdvancedPage>
               ),
             ],
           ),
-
-          // Timer and Start Button (keep existing code below)
           const SizedBox(height: 20),
           CircularPercentIndicator(
             radius: 100,
@@ -254,8 +244,6 @@ class _AdvancedPageState extends State<AdvancedPage>
             progressColor: PrimaryColor,
           ),
           const SizedBox(height: 20),
-
-          // Start Button
           ElevatedButton(
             onPressed: _isTimerRunning ? null : _startTimer,
             child: Text(_isTimerRunning ? "Running..." : "Start Exercise"),
