@@ -97,7 +97,7 @@ class MyApp extends StatelessWidget {
       home: const OnBoardingScreen(),
       // home: const HomepageNavbar(),
       // home: const MultiCalculatorFlow(),
-      //home: const NotificationPage(),
+      // home: const NotificationPage(),
       // home: const workoutCategoriesPage(),
     );
   }
