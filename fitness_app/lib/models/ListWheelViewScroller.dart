@@ -3,47 +3,46 @@
 import 'package:fitness_app/constants/color.dart';
 import 'package:flutter/material.dart';
 
-class listWheelScrollView extends StatelessWidget {
+class ListWheelScrollViewWrapper extends StatelessWidget {
   final List<String> items;
-  const listWheelScrollView(
-      {super.key,
-      required this.items,
-      required Null Function(dynamic index) onSelectedItemChanged,
-      required double itemExtent,
-      required double overAndUnderCenterOpacity});
+  final Function(int) onSelectedItemChanged;
+  final double itemExtent;
+  final double overAndUnderCenterOpacity;
+  final FixedExtentScrollController? controller;
+
+  const ListWheelScrollViewWrapper({
+    super.key,
+    required this.items,
+    required this.onSelectedItemChanged,
+    required this.itemExtent,
+    this.overAndUnderCenterOpacity = 0.3,
+    this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ListWheelScrollView(
+    return ListWheelScrollView.useDelegate(
+      controller: controller,
+      itemExtent: itemExtent,
       magnification: 1.3,
       useMagnifier: true,
-      overAndUnderCenterOpacity: 0.19,
+      overAndUnderCenterOpacity: overAndUnderCenterOpacity,
       physics: const FixedExtentScrollPhysics(),
-      controller: FixedExtentScrollController(initialItem: items.length ~/ 2),
-      itemExtent: 50,
-      onSelectedItemChanged: (index) {
-        // Handle the selected item change
-        // ignore: avoid_print
-        print(index);
-      },
-      diameterRatio: 1.5,
-      children: items.map((level) {
-        return Text(level,
+      onSelectedItemChanged: onSelectedItemChanged,
+      childDelegate: ListWheelChildBuilderDelegate(
+        builder: (context, index) {
+          if (index < 0 || index >= items.length) return null;
+          return Text(
+            items[index],
             style: const TextStyle(
               fontSize: 30,
               color: PrimaryColor,
               fontWeight: FontWeight.bold,
-            ));
-      }).toList(),
+            ),
+          );
+        },
+        childCount: items.length,
+      ),
     );
   }
-
-  static useDelegate(
-      {required FixedExtentScrollController controller,
-      required double itemExtent,
-      required double magnification,
-      required bool useMagnifier,
-      required FixedExtentScrollPhysics physics,
-      required Null Function(dynamic index) onSelectedItemChanged,
-      required ListWheelChildBuilderDelegate childDelegate}) {}
 }

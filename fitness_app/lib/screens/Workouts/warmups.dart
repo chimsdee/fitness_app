@@ -67,40 +67,59 @@ class _WarmUpsPageState extends State<WarmUpsPage>
       _completedExercises[_currentTabIndex] = true;
       _timerSeconds = 3;
     });
-    _showCompletionDialog();
+    _showWorkoutComplete();
   }
 
-  void _showCompletionDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Lottie.asset('assets/congrats.json', height: 150),
-            Text(
-                "Congratulations!\nYou finished ${_exercises[_currentTabIndex]}!"),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              if (_currentTabIndex < 4) {
-                setState(() {
-                  _currentTabIndex++;
-                });
-                _tabController.animateTo(_currentTabIndex);
-              } else {
-                _showWorkoutComplete();
-              }
-            },
-            child: Text(_currentTabIndex == 4 ? "Done" : "Next Warm-Up"),
+  void _showWorkoutComplete() {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) => AlertDialog(
+      backgroundColor: Colors.black,
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Lottie.asset('assets/celebrate.json', height: 200),
+          const SizedBox(height: 16),
+          const Text(
+            "Workout Complete! 🎉",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 8),
+          const Text(
+            "Great job! You've completed all exercises.",
+            style: TextStyle(
+              color: Colors.white70,
+              fontSize: 16,
+            ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
-    );
-  }
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop(); // Close dialog
+            Navigator.of(context).pop(); // Go back to workout categories
+          },
+          child: const Text(
+            "Back to Workouts",
+            style: TextStyle(
+              color: PrimaryColor,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
   void _showInstructions(String exercise) {
     showDialog(
@@ -121,31 +140,6 @@ class _WarmUpsPageState extends State<WarmUpsPage>
     );
   }
 
-  void _showWorkoutComplete() {
-  showDialog(
-    context: context,
-    builder: (context) => AlertDialog(
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Lottie.asset('assets/celebrate.json', height: 200),
-          const Text("Workout Complete! 🎉"),
-        ],
-      ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            // Close the dialog
-            Navigator.pop(context);
-            // Navigate to workout categories and remove the beginner page from stack
-            Navigator.pushReplacementNamed(context, '/workoutCategories');
-          },
-          child: const Text("Back to Workouts"),
-        ),
-      ],
-    ),
-  );
-}
 
   @override
   Widget build(BuildContext context) {
