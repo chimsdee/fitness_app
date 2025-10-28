@@ -120,26 +120,30 @@ class _YogaPageState extends State<YogaPage> with TickerProviderStateMixin {
   }
 
   void _showWorkoutComplete() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Lottie.asset('assets/celebrate.json', height: 200),
-            const Text("Workout Complete! 🎉"),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () =>
-                Navigator.popUntil(context, (route) => route.isFirst),
-            child: const Text("Back to Home"),
-          ),
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Lottie.asset('assets/celebrate.json', height: 200),
+          const Text("Workout Complete! 🎉"),
         ],
       ),
-    );
-  }
+      actions: [
+        TextButton(
+          onPressed: () {
+            // Close the dialog
+            Navigator.pop(context);
+            // Navigate to workout categories and remove the beginner page from stack
+            Navigator.pushReplacementNamed(context, '/workoutCategories');
+          },
+          child: const Text("Back to Workouts"),
+        ),
+      ],
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
