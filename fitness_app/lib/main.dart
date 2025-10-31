@@ -293,7 +293,6 @@ void initializeApp() {
   WidgetsFlutterBinding.ensureInitialized();
 }
 
-// Call this in main() before runApp()
 void main() {
   initializeApp();
   runApp(const ErrorBoundary(child: MyApp()));
