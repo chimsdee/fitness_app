@@ -14,8 +14,6 @@
 ## 📱 App Preview
 
 | Onboarding | Workouts | Calculators | Profile |
-|------------|----------|-------------|---------|
-| ![Onboarding](https://via.placeholder.com/200x400/0a0a0a/01e8e0?text=Onboarding) | ![Workouts](https://via.placeholder.com/200x400/0a0a0a/01e8e0?text=Workouts) | ![Calculators](https://via.placeholder.com/200x400/0a0a0a/01e8e0?text=Calculators) | ![Profile](https://via.placeholder.com/200x400/0a0a0a/01e8e0?text=Profile) |
 
 ## 🚀 Features
 
